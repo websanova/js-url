@@ -1,6 +1,6 @@
-# $.uri()
+# $.url()
 
-A jQuery $.uri() method for quickly parsing a uri.
+A simple, lightweight url parser for jQuery.
 
 
 ## Examples
@@ -10,37 +10,37 @@ http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=c
 ```
 
 ```javascript
-$.uri();            // http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
-$.uri('domain');    // www.domain.com
-$.uri('host');      // domain.com
-$.uri('tld');       // com
-$.uri('sub');       // www
-$.uri('port');      // 80
-$.uri('protocol');  // http
-$.uri('path');      // /path/index.html
-$.uri('file');      // index.html
-$.uri('filename');  // index
-$.uri('fileext');   // html
-$.uri('1');         // path
-$.uri('2');         // index.html
-$.uri('3');         // (an empty string)
-$.uri('-1');        // index.html
-$.uri('?');         // query1=test&silly=willy
-$.uri('?silly');    // willy
-$.uri('?poo');      // (an empty string)
-$.uri('#');         // test=hash&chucky=cheese
-$.uri('#chucky');   // cheese
-$.uri('#poo');      // (an empty string)
+$.url();            // http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
+$.url('domain');    // www.domain.com
+$.url('host');      // domain.com
+$.url('tld');       // com
+$.url('sub');       // www
+$.url('port');      // 80
+$.url('protocol');  // http
+$.url('path');      // /path/index.html
+$.url('file');      // index.html
+$.url('filename');  // index
+$.url('fileext');   // html
+$.url('1');         // path
+$.url('2');         // index.html
+$.url('3');         // (an empty string)
+$.url('-1');        // index.html
+$.url('?');         // query1=test&silly=willy
+$.url('?silly');    // willy
+$.url('?poo');      // (an empty string)
+$.url('#');         // test=hash&chucky=cheese
+$.url('#chucky');   // cheese
+$.url('#poo');      // (an empty string)
 ```
 
 We can also pass a url in and use all the same options on it:
 
 ```javascript
-$.uri('sub', 'test.www.domain.com/path/here');               // test.www
-$.uri('protocol', 'www.domain.com/path/here');               // http
-$.uri('path', 'http://www.domain.com:8080/some/path');       // /some/path
-$.uri('port', 'http://www.domain.com:8080/some/path');       // 8080
-$.uri('protocol', 'https://www.domain.com:8080/some/path');  // https
+$.url('sub', 'test.www.domain.com/path/here');               // test.www
+$.url('protocol', 'www.domain.com/path/here');               // http
+$.url('path', 'http://www.domain.com:8080/some/path');       // /some/path
+$.url('port', 'http://www.domain.com:8080/some/path');       // 8080
+$.url('protocol', 'https://www.domain.com:8080/some/path');  // https
 etc...
 ```
 

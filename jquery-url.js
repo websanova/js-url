@@ -7,14 +7,14 @@
  * @copyright       Copyright (c) 2012 Websanova.
  * @license         This websanova jQuery boilerplate is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
- * @github          http://github.com/websanova/jquery-uri
- * @version			1.5.0
+ * @github          http://github.com/websanova/jquery-url
+ * @version			1.6.0
  *
  ******************************************/
 
 jQuery.extend(
 {
-	uri: function(arg, url)
+	url: function(arg, url)
 	{
 		var _ls = url || window.location.toString();
 

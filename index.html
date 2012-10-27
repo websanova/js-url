@@ -2,42 +2,42 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Websanova $.uri()</title>
+	<title>Websanova $.url()</title>
 
 	<script type="text/javascript" src="./inc/jquery.1.8.2.min.js"></script>
-	<script type="text/javascript" src="./jquery-uri.js"></script>
+	<script type="text/javascript" src="./jquery-url.js"></script>
 
 	<script type="text/javascript">
 
-		console.log($.uri());
-		console.log('domain: ' + $.uri('domain'));
-		console.log('host: ' + $.uri('host'));
-		console.log('tld: ' + $.uri('tld'));
-		console.log('sub: ' + $.uri('sub'));
-		console.log('port: ' + $.uri('port'));
-		console.log('protocol: ' + $.uri('protocol'));
-		console.log('path: ' + $.uri('path'));
-		console.log('file: ' + $.uri('file'));
-		console.log('filename: ' + $.uri('filename'));
-		console.log('fileext: ' + $.uri('fileext'));
-		console.log('1: ' + $.uri('1'));
-		console.log('2: ' + $.uri('2'));
-		console.log('3: ' + $.uri('3'));
-		console.log('-1: ' + $.uri('-1'));
-		console.log('-2: ' + $.uri('-2'));
-		console.log('-3: ' + $.uri('-3'));
-		console.log('?: ' + $.uri('?'));
-		console.log('?test: ' + $.uri('?test'));
-		console.log('?poo: ' + $.uri('?poo'));
-		console.log('#: ' + $.uri('#'));
-		console.log('#this: ' + $.uri('#this'));
-		console.log('#test: ' + $.uri('#test'));
+		console.log($.url());
+		console.log('domain: ' + $.url('domain'));
+		console.log('host: ' + $.url('host'));
+		console.log('tld: ' + $.url('tld'));
+		console.log('sub: ' + $.url('sub'));
+		console.log('port: ' + $.url('port'));
+		console.log('protocol: ' + $.url('protocol'));
+		console.log('path: ' + $.url('path'));
+		console.log('file: ' + $.url('file'));
+		console.log('filename: ' + $.url('filename'));
+		console.log('fileext: ' + $.url('fileext'));
+		console.log('1: ' + $.url('1'));
+		console.log('2: ' + $.url('2'));
+		console.log('3: ' + $.url('3'));
+		console.log('-1: ' + $.url('-1'));
+		console.log('-2: ' + $.url('-2'));
+		console.log('-3: ' + $.url('-3'));
+		console.log('?: ' + $.url('?'));
+		console.log('?test: ' + $.url('?test'));
+		console.log('?poo: ' + $.url('?poo'));
+		console.log('#: ' + $.url('#'));
+		console.log('#this: ' + $.url('#this'));
+		console.log('#test: ' + $.url('#test'));
 
-		console.log($.uri('sub', 'test.www.domain.com/path/here'));
-		console.log($.uri('protocol', 'test.www.domain.com/path/here'));
-		console.log($.uri('path', 'http://www.domain.com:8080/some/path'));
-		console.log($.uri('port', 'http://www.domain.com:8080/some/path'));
-		console.log($.uri('protocol', 'https://www.domain.com:8080/some/path'));
+		console.log($.url('sub', 'test.www.domain.com/path/here'));
+		console.log($.url('protocol', 'test.www.domain.com/path/here'));
+		console.log($.url('path', 'http://www.domain.com:8080/some/path'));
+		console.log($.url('port', 'http://www.domain.com:8080/some/path'));
+		console.log($.url('protocol', 'https://www.domain.com:8080/some/path'));
 
 	</script>
 </head>
