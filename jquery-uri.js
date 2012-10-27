@@ -8,7 +8,7 @@
  * @license         This websanova jQuery boilerplate is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github          http://github.com/websanova/jquery-uri
- * @version			1.3.0
+ * @version			1.4.0
  *
  ******************************************/
 
@@ -28,6 +28,8 @@ jQuery.extend(
 		else if(arg === 'host') return _hs.slice(-2).join('.');
 		else if(arg === 'tld') return _hs.slice(-1).join('.');
 		else if(arg === 'sub') return _hs.slice(0, _hs.length - 2).join('.');
+		else if(arg === 'port') return _l.port || '80';
+		else if(arg === 'protocol') return _l.protocol.split(':')[0];
 		else if(arg === 'path') return _p;
 		else if($.isNumeric(arg)){ arg = parseInt(arg); return _ps[arg < 0 ? _ps.length + arg : arg] || ''; }
 		else if(arg === 'file') return _ps.slice(-1);

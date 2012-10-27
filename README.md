@@ -15,6 +15,8 @@ $.uri('domain');    // www.domain.com
 $.uri('host');      // domain.com
 $.uri('tld');       // com
 $.uri('sub');       // www
+$.uri('port');      // 80
+$.uri('protocol');  // http
 $.uri('path');      // /path/index.html
 $.uri('file');      // index.html
 $.uri('filename');  // index
