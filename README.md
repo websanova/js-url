@@ -33,7 +33,7 @@ $.uri('#chucky');   // cheese
 $.uri('#poo');      // (an empty string)
 ```
 
-We can also pass a domain in and use all the same options on it:
+We can also pass a url in and use all the same options on it:
 
 ```javascript
 $.uri('sub', 'test.www.domain.com/path/here');               // test.www
