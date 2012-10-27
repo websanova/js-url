@@ -6,17 +6,23 @@ A jQuery $.uri() method for quickly parsing a uri.
 ## Examples
 
 ```html
-http://www.domain.com/path/name?query1=test&silly=willy#test=hash&chucky=cheese
+http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 ```
 
 ```javascript
-$.uri();            // http://www.domain.com/path/name?query1=test&silly=willy#test=hash&chucky=cheese
+$.uri();            // http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 $.uri('domain');    // www.domain.com
-$.uri('tld');       // domain.com
-$.uri('path');      // /path/name/
+$.uri('host');      // domain.com
+$.uri('tld');       // com
+$.uri('sub');       // www
+$.uri('path');      // /path/index.html
+$.uri('file');      // index.html
+$.uri('filename');  // index
+$.uri('fileext');   // html
 $.uri('1');         // path
-$.uri('2');         // name
+$.uri('2');         // index.html
 $.uri('3');         // (an empty string)
+$.uri('-1');        // index.html
 $.uri('?');         // query1=test&silly=willy
 $.uri('?silly');    // willy
 $.uri('?poo');      // (an empty string)

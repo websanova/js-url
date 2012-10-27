@@ -10,19 +10,26 @@
 	<script type="text/javascript">
 
 		console.log($.uri());
-		console.log($.uri('domain'));
-		console.log($.uri('tld'));
-		console.log($.uri('path'));
-		console.log($.uri('1'));
-		console.log($.uri('2'));
-		console.log($.uri('3'));
-		console.log($.uri('4'));
-		console.log($.uri('?'));
-		console.log($.uri('?test'));
-		console.log($.uri('?poo'));
-		console.log($.uri('#'));
-		console.log($.uri('#this'));
-		console.log($.uri('#test'));
+		console.log('domain: ' + $.uri('domain'));
+		console.log('host: ' + $.uri('host'));
+		console.log('tld: ' + $.uri('tld'));
+		console.log('sub: ' + $.uri('sub'));
+		console.log('path: ' + $.uri('path'));
+		console.log('file: ' + $.uri('file'));
+		console.log('filename: ' + $.uri('filename'));
+		console.log('fileext: ' + $.uri('fileext'));
+		console.log('1: ' + $.uri('1'));
+		console.log('2: ' + $.uri('2'));
+		console.log('3: ' + $.uri('3'));
+		console.log('-1: ' + $.uri('-1'));
+		console.log('-2: ' + $.uri('-2'));
+		console.log('-3: ' + $.uri('-3'));
+		console.log('?: ' + $.uri('?'));
+		console.log('?test: ' + $.uri('?test'));
+		console.log('?poo: ' + $.uri('?poo'));
+		console.log('#: ' + $.uri('#'));
+		console.log('#this: ' + $.uri('#this'));
+		console.log('#test: ' + $.uri('#test'));
 
 	</script>
 </head>

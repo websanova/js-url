@@ -18,9 +18,26 @@ jQuery.extend(
 	{
 		if(!arg) return window.location.toString();
 		else if(arg === 'domain') return window.location.hostname;
-		else if(arg === 'tld') return window.location.hostname.split('.').slice(-2).join('.');
+		else if(arg === 'host') return window.location.hostname.split('.').slice(-2).join('.');
+		else if(arg === 'tld') return window.location.hostname.split('.').slice(-1).join('.');
+		else if(arg === 'sub')
+		{
+			var domain = window.location.hostname.split('.');
+
+			if(domain.length < 3) return '';
+			else return domain.slice(0, domain.length - 2).join('.');
+		}
 		else if(arg === 'path') return window.location.pathname;
-		else if($.isNumeric(arg)) return window.location.pathname.split('/')[arg] || '';
+		else if($.isNumeric(arg))
+		{
+			var path = window.location.pathname.split('/');
+			
+			arg = parseInt(arg);
+			return path[arg < 0 ? path.length + arg : arg] || '';
+		}
+		else if(arg === 'file') return window.location.pathname.split('/').slice(-1);
+		else if(arg === 'filename') return window.location.pathname.split('/').slice(-1)[0].split('.')[0];
+		else if(arg === 'fileext') return window.location.pathname.split('/').slice(-1)[0].split('.')[1] || '';
 		else if(arg[0] === '?' || arg[0] === '#')
 		{
 			var params = window.location.toString(), param = null;
