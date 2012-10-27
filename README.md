@@ -10,7 +10,7 @@ http://www.domain.com/path/name?query1=test&silly=willy#test=hash&chucky=cheese
 ```
 
 ```javascript
-$.uri();            // www.domain.com
+$.uri();            // http://www.domain.com/path/name?query1=test&silly=willy#test=hash&chucky=cheese
 $.uri('domain');    // www.domain.com
 $.uri('tld');       // domain.com
 $.uri('path');      // /path/name/
