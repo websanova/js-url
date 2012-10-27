@@ -8,7 +8,7 @@
  * @license         This websanova jQuery boilerplate is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github          http://github.com/websanova/jquery-uri
- * @version			1.2.0
+ * @version			1.3.0
  *
  ******************************************/
 
@@ -16,31 +16,26 @@ jQuery.extend(
 {
 	uri: function(arg)
 	{
-		if(!arg) return window.location.toString();
-		else if(arg === 'domain') return window.location.hostname;
-		else if(arg === 'host') return window.location.hostname.split('.').slice(-2).join('.');
-		else if(arg === 'tld') return window.location.hostname.split('.').slice(-1).join('.');
-		else if(arg === 'sub')
-		{
-			var domain = window.location.hostname.split('.');
+		var _l = window.location,
+		_ls = _l.toString(),
+		_h = _l.hostname,
+		_hs = _h.split('.'),
+		_p = _l.pathname,
+		_ps = _p.split('/');
 
-			if(domain.length < 3) return '';
-			else return domain.slice(0, domain.length - 2).join('.');
-		}
-		else if(arg === 'path') return window.location.pathname;
-		else if($.isNumeric(arg))
-		{
-			var path = window.location.pathname.split('/');
-
-			arg = parseInt(arg);
-			return path[arg < 0 ? path.length + arg : arg] || '';
-		}
-		else if(arg === 'file') return window.location.pathname.split('/').slice(-1);
-		else if(arg === 'filename') return window.location.pathname.split('/').slice(-1)[0].split('.')[0];
-		else if(arg === 'fileext') return window.location.pathname.split('/').slice(-1)[0].split('.')[1] || '';
+		if(!arg) return _ls;
+		else if(arg === 'domain') return _h;
+		else if(arg === 'host') return _hs.slice(-2).join('.');
+		else if(arg === 'tld') return _hs.slice(-1).join('.');
+		else if(arg === 'sub') return _hs.slice(0, _hs.length - 2).join('.');
+		else if(arg === 'path') return _p;
+		else if($.isNumeric(arg)){ arg = parseInt(arg); return _ps[arg < 0 ? _ps.length + arg : arg] || ''; }
+		else if(arg === 'file') return _ps.slice(-1);
+		else if(arg === 'filename') return _ps.slice(-1)[0].split('.')[0];
+		else if(arg === 'fileext') return _ps.slice(-1)[0].split('.')[1] || '';
 		else if(arg[0] === '?' || arg[0] === '#')
 		{
-			var params = window.location.toString(), param = null;
+			var params = _ls, param = null;
 
 			if(arg[0] === '?') params = (params.split('?')[1] || '').split('#')[0];
 			else if(arg[0] === '#') params = (params.split('#')[1] || '');
