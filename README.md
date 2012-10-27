@@ -37,6 +37,7 @@ We can also pass a domain in and use all the same options on it:
 
 ```javascript
 $.uri('sub', 'test.www.domain.com/path/here');               // test.www
+$.uri('protocol', 'www.domain.com/path/here');               // http
 $.uri('path', 'http://www.domain.com:8080/some/path');       // /some/path
 $.uri('port', 'http://www.domain.com:8080/some/path');       // 8080
 $.uri('protocol', 'https://www.domain.com:8080/some/path');  // https
