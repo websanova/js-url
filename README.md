@@ -36,9 +36,10 @@ $.uri('#poo');      // (an empty string)
 We can also pass a domain in and use all the same options on it:
 
 ```javascript
-$.uri('path', 'www.domain.com/path/here');                     // /path/here
-$.uri('sub', 'https://test.www.domain.com:8080/some/path');    // test.www
-$.uri('port', 'https://test.www.domain.com:8080/some/path');   // 8080
+$.uri('sub', 'test.www.domain.com/path/here');               // test.www
+$.uri('path', 'http://www.domain.com:8080/some/path');       // /some/path
+$.uri('port', 'http://www.domain.com:8080/some/path');       // 8080
+$.uri('protocol', 'https://www.domain.com:8080/some/path');  // https
 etc...
 ```
 
