@@ -33,6 +33,10 @@
 		console.log('#this: ' + $.uri('#this'));
 		console.log('#test: ' + $.uri('#test'));
 
+		console.log($.uri('path', 'www.domain.com/path/here'));
+		console.log($.uri('sub', 'https://test.www.domain.com:8080/this/is/a/test'));
+		console.log($.uri('port', 'https://test.www.domain.com:8080/this/is/a/test'));
+
 	</script>
 </head>
 <body>

@@ -8,20 +8,23 @@
  * @license         This websanova jQuery boilerplate is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github          http://github.com/websanova/jquery-uri
- * @version			1.4.0
+ * @version			1.5.0
  *
  ******************************************/
 
 jQuery.extend(
 {
-	uri: function(arg)
+	uri: function(arg, url)
 	{
-		var _l = window.location,
-		_ls = _l.toString(),
-		_h = _l.hostname,
-		_hs = _h.split('.'),
-		_p = _l.pathname,
-		_ps = _p.split('/');
+		var _ls = url || window.location.toString();
+
+		if(!(_ls.substring(0,7) === 'http://' || _ls.substring(0,8) === 'https://')) _ls = 'http://' + _ls;
+
+		url = _ls.split('/');
+
+		var host = url[2].split(':');
+		var _l = {protocol:url[0], hostname:host[0], port:(host[1]||'80'), pathname:'/' + url.slice(3, url.length).join('/').split('?')[0]}
+		var _h = _l.hostname, _hs = _h.split('.'), _p = _l.pathname, _ps = _p.split('/');
 
 		if(!arg) return _ls;
 		else if(arg === 'domain') return _h;
