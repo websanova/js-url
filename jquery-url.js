@@ -12,10 +12,12 @@
  *
  ******************************************/
 
-jQuery.extend(
-{
-	url: function(arg, url)
-	{
+window.url = (function() {
+	function isNumeric(arg) {
+	  return !isNaN(parseFloat(arg)) && isFinite(arg);
+	}
+	
+	return function url(arg, url) {
 		var _ls = url || window.location.toString();
 
 		if(!(_ls.substring(0,7) === 'http://' || _ls.substring(0,8) === 'https://')) _ls = 'http://' + _ls;
@@ -34,7 +36,7 @@ jQuery.extend(
 		else if(arg === 'port') return _l.port || '80';
 		else if(arg === 'protocol') return _l.protocol.split(':')[0];
 		else if(arg === 'path') return _p;
-		else if($.isNumeric(arg)){ arg = parseInt(arg); return _ps[arg < 0 ? _ps.length + arg : arg] || ''; }
+		else if(isNumeric(arg)){ arg = parseInt(arg); return _ps[arg < 0 ? _ps.length + arg : arg] || ''; }
 		else if(arg === 'file') return _ps.slice(-1);
 		else if(arg === 'filename') return _ps.slice(-1)[0].split('.')[0];
 		else if(arg === 'fileext') return _ps.slice(-1)[0].split('.')[1] || '';
@@ -59,4 +61,4 @@ jQuery.extend(
 
 		return '';
 	}
-});
+})();
