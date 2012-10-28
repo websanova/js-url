@@ -6,7 +6,7 @@ A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzippe
 ## Examples
 
 ```html
-http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
+http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 ```
 
 ```javascript
