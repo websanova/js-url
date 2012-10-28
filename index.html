@@ -2,42 +2,41 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Websanova $.url()</title>
+	<title>Websanova url()</title>
 
-	<script type="text/javascript" src="./inc/jquery.1.8.2.min.js"></script>
 	<script type="text/javascript" src="./jquery-url.js"></script>
 
 	<script type="text/javascript">
 
-		console.log($.url());
-		console.log('domain: ' + $.url('domain'));
-		console.log('host: ' + $.url('host'));
-		console.log('tld: ' + $.url('tld'));
-		console.log('sub: ' + $.url('sub'));
-		console.log('port: ' + $.url('port'));
-		console.log('protocol: ' + $.url('protocol'));
-		console.log('path: ' + $.url('path'));
-		console.log('file: ' + $.url('file'));
-		console.log('filename: ' + $.url('filename'));
-		console.log('fileext: ' + $.url('fileext'));
-		console.log('1: ' + $.url('1'));
-		console.log('2: ' + $.url('2'));
-		console.log('3: ' + $.url('3'));
-		console.log('-1: ' + $.url('-1'));
-		console.log('-2: ' + $.url('-2'));
-		console.log('-3: ' + $.url('-3'));
-		console.log('?: ' + $.url('?'));
-		console.log('?test: ' + $.url('?test'));
-		console.log('?poo: ' + $.url('?poo'));
-		console.log('#: ' + $.url('#'));
-		console.log('#this: ' + $.url('#this'));
-		console.log('#test: ' + $.url('#test'));
+		console.log(url());
+		console.log('domain: ' + url('domain'));
+		console.log('host: ' + url('host'));
+		console.log('tld: ' + url('tld'));
+		console.log('sub: ' + url('sub'));
+		console.log('port: ' + url('port'));
+		console.log('protocol: ' + url('protocol'));
+		console.log('path: ' + url('path'));
+		console.log('file: ' + url('file'));
+		console.log('filename: ' + url('filename'));
+		console.log('fileext: ' + url('fileext'));
+		console.log('1: ' + url('1'));
+		console.log('2: ' + url('2'));
+		console.log('3: ' + url('3'));
+		console.log('-1: ' + url('-1'));
+		console.log('-2: ' + url('-2'));
+		console.log('-3: ' + url('-3'));
+		console.log('?: ' + url('?'));
+		console.log('?test: ' + url('?test'));
+		console.log('?poo: ' + url('?poo'));
+		console.log('#: ' + url('#'));
+		console.log('#this: ' + url('#this'));
+		console.log('#test: ' + url('#test'));
 
-		console.log($.url('sub', 'test.www.domain.com/path/here'));
-		console.log($.url('protocol', 'test.www.domain.com/path/here'));
-		console.log($.url('path', 'http://www.domain.com:8080/some/path'));
-		console.log($.url('port', 'http://www.domain.com:8080/some/path'));
-		console.log($.url('protocol', 'https://www.domain.com:8080/some/path'));
+		console.log(url('sub', 'test.www.domain.com/path/here'));
+		console.log(url('protocol', 'test.www.domain.com/path/here'));
+		console.log(url('path', 'http://www.domain.com:8080/some/path'));
+		console.log(url('port', 'http://www.domain.com:8080/some/path'));
+		console.log(url('protocol', 'https://www.domain.com:8080/some/path'));
 
 	</script>
 </head>
