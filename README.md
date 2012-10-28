@@ -11,8 +11,8 @@ http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=
 
 ```javascript
 url();            // http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
-url('domain');    // www.domain.com
-url('hostname');  // domain.com
+url('domain');    // domain.com
+url('hostname');  // www.domain.com
 url('tld');       // com
 url('sub');       // www
 url('.0')         // (an empty string)
