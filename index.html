@@ -5,6 +5,7 @@
 	<title>Websanova url()</title>
 
 	<script type="text/javascript" src="./js-url.min.js"></script>
+	<script type="text/javascript" src="./jquery-url.js"></script>
 
 	<script type="text/javascript">
 
@@ -69,6 +70,8 @@
 		console.log(url('auth', 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
 		console.log(url('user', 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
 		console.log(url('pass', 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
+
+		console.log($.url());
 
 	</script>
 </head>

@@ -56,6 +56,10 @@ url('protocol', 'https://www.domain.com:8080/some/path');  // https
 etc...
 ```
 
+## jQuery
+
+Also include is a jQuery version of the plugin that can be called via $.url() with all the same options.  If you're already using jQuery it may be better to use the jQuery version to avoid namespacing issues.
+
 
 ## Resources
 
