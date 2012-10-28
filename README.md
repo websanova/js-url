@@ -1,6 +1,6 @@
 # url()
 
-A simple, lightweight url parser for jQuery (~1.2 Kb minified, ~0.5Kb gzipped).
+A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzipped).
 
 
 ## Examples
