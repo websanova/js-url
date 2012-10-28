@@ -4,15 +4,26 @@
 	<meta charset="utf-8">
 	<title>Websanova url()</title>
 
-	<script type="text/javascript" src="./jquery-url.js"></script>
+	<script type="text/javascript" src="./js-url.js"></script>
 
 	<script type="text/javascript">
 
 		console.log(url());
+		console.log('err: ' + url('err'));
+		console.log('err: ' + url(''));
+
 		console.log('domain: ' + url('domain'));
-		console.log('host: ' + url('host'));
+		console.log('hostname: ' + url('hostname'));
 		console.log('tld: ' + url('tld'));
 		console.log('sub: ' + url('sub'));
+		console.log('.0: ' + url('.0'));
+		console.log('.1: ' + url('.1'));
+		console.log('.2: ' + url('.2'));
+		console.log('.3: ' + url('.3'));
+		console.log('.-1: ' + url('.-1'));
+		console.log('.-2: ' + url('.-2'));
+		console.log('.-3: ' + url('.-3'));
+		console.log('.poo: ' + url('.poo'));
 		console.log('port: ' + url('port'));
 		console.log('protocol: ' + url('protocol'));
 		console.log('path: ' + url('path'));
@@ -25,6 +36,12 @@
 		console.log('-1: ' + url('-1'));
 		console.log('-2: ' + url('-2'));
 		console.log('-3: ' + url('-3'));
+		console.log('1: ' + url(1));
+		console.log('2: ' + url(2));
+		console.log('3: ' + url(3));
+		console.log('-1: ' + url(-1));
+		console.log('-2: ' + url(-2));
+		console.log('-3: ' + url(-3));
 		console.log('?: ' + url('?'));
 		console.log('?test: ' + url('?test'));
 		console.log('?poo: ' + url('?poo'));
@@ -32,11 +49,23 @@
 		console.log('#this: ' + url('#this'));
 		console.log('#test: ' + url('#test'));
 
+		console.log('***********************************');
+
+		console.log(url('domain', 'test.www.domain.com/path/here'));
+		console.log(url('hostname', 'test.www.domain.com/path/here'));
 		console.log(url('sub', 'test.www.domain.com/path/here'));
 		console.log(url('protocol', 'test.www.domain.com/path/here'));
 		console.log(url('path', 'http://www.domain.com:8080/some/path'));
 		console.log(url('port', 'http://www.domain.com:8080/some/path'));
 		console.log(url('protocol', 'https://www.domain.com:8080/some/path'));
+		console.log(url('protocol', 'sml://www.domain.com:8080/some/path'));
+		console.log(url('hostname', 'sml://username:password@www.domain.com:8080/some/path'));
+		console.log(url('auth', 'sml://rob:mofo123@www.domain.com:8080/some/path'));
+		console.log(url('user', 'sml://rob:mofo123@www.domain.com:8080/some/path'));
+		console.log(url('pass', 'sml://rob:mofo123a@www.domain.com:8080/some/path'));
+		console.log(url('hostname', '//github.com'));
+		console.log(url('#', 'http://www.domain.com/sub#hash'));
+		console.log(url('file', 'http://www.domain.com/sub#hash'));
 
 	</script>
 </head>
