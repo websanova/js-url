@@ -6,18 +6,18 @@ A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzippe
 ## Examples
 
 ```html
-http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
+http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 ```
 
 ```javascript
-url();            // http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
-url('domain');    // domain.com
-url('hostname');  // www.domain.com
+url();            // http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
+url('domain');    // example.com
+url('hostname');  // www.example.com
 url('tld');       // com
 url('sub');       // www
 url('.0')         // (an empty string)
 url('.1')         // www
-url('.2')         // domain
+url('.2')         // example
 url('.-1')        // com
 url('auth')       // rob:abcd1234
 url('user')       // rob
@@ -46,13 +46,13 @@ url('#poo');      // (an empty string)
 We can also pass a url in and use all the same options on it:
 
 ```javascript
-url('domain', 'test.www.domain.com/path/here');            // domain.com
-url('hostname', 'test.www.domain.com/path/here');          // test.www.domain.com
-url('sub', 'test.www.domain.com/path/here');               // test.www
-url('protocol', 'www.domain.com/path/here');               // http
-url('path', 'http://www.domain.com:8080/some/path');       // /some/path
-url('port', 'http://www.domain.com:8080/some/path');       // 8080
-url('protocol', 'https://www.domain.com:8080/some/path');  // https
+url('domain', 'test.www.example.com/path/here');            // example.com
+url('hostname', 'test.www.example.com/path/here');          // test.www.example.com
+url('sub', 'test.www.example.com/path/here');               // test.www
+url('protocol', 'www.example.com/path/here');               // http
+url('path', 'http://www.example.com:8080/some/path');       // /some/path
+url('port', 'http://www.example.com:8080/some/path');       // 8080
+url('protocol', 'https://www.example.com:8080/some/path');  // https
 etc...
 ```
 
