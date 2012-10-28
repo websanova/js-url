@@ -10,7 +10,7 @@ http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=c
 ```
 
 ```javascript
-url();            // http://www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
+url();            // http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 url('domain');    // www.domain.com
 url('host');      // domain.com
 url('tld');       // com
@@ -19,6 +19,9 @@ url('.0')         // (an empty string)
 url('.1')         // www
 url('.2')         // domain
 url('.-1')        // com
+url('auth')       // rob:abcd1234
+url('user')       // rob
+url('pass')       // abcd1234
 url('port');      // 80
 url('protocol');  // http
 url('path');      // /path/index.html

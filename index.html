@@ -66,6 +66,9 @@
 		console.log(url('hostname', '//github.com'));
 		console.log(url('#', 'http://www.domain.com/sub#hash'));
 		console.log(url('file', 'http://www.domain.com/sub#hash'));
+		console.log(url('auth', 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
+		console.log(url('user', 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
+		console.log(url('pass', 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
 
 	</script>
 </head>
