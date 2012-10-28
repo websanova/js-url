@@ -31,7 +31,7 @@ url('3');         // (an empty string)
 url('-1');        // index.html
 url(1);           // path
 url(2);           // index.html
-url(-1);          s// index.html
+url(-1);          // index.html
 url('?');         // query1=test&silly=willy
 url('?silly');    // willy
 url('?poo');      // (an empty string)
