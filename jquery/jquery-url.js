@@ -12,7 +12,7 @@ jQuery.extend(
 		if(host.length === 1) host = host[0].split(':');
 		else{ _l.auth = host[0]; host = host[1].split(':'); }
 
-		_l.protocol=url[0], _l.hostname=host[0], _l.port=(host[1]||'80'), _l.pathname='/' + url.slice(3, url.length).join('/').split('?')[0];
+		_l.protocol=url[0], _l.hostname=host[0], _l.port=(host[1]||'80'), _l.pathname='/' + url.slice(3, url.length).join('/').split('?')[0].split('#')[0];
 		var _p = _l.pathname;
 		if(_p.split('.').length === 1 && _p[_p.length-1] !== '/') _p += '/';
 		var _h = _l.hostname, _hs = _h.split('.'), _ps = _p.split('/');
@@ -33,7 +33,7 @@ jQuery.extend(
 			arg = arg.substring(1);
 			if($.isNumeric(arg)) {arg = parseInt(arg); return _hs[arg < 0 ? _hs.length + arg : arg-1] || ''; }
 		}
-		else if($.isNumeric(arg)){ arg = parseInt(arg); return _ps[arg < 0 ? _ps.length + arg : arg] || ''; }
+		else if($.isNumeric(arg)){ arg = parseInt(arg); return _ps[arg < 0 ? _ps.length - 1 + arg : arg] || ''; }
 		else if(arg === 'file') return _ps.slice(-1)[0];
 		else if(arg === 'filename') return _ps.slice(-1)[0].split('.')[0];
 		else if(arg === 'fileext') return _ps.slice(-1)[0].split('.')[1] || '';
