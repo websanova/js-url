@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Websanova url()</title>
 
-	<script type="text/javascript" src="./js-url.min.js"></script>
+	<script type="text/javascript" src="./js-url.js"></script>
 
 	<script type="text/javascript">
 
@@ -50,6 +50,7 @@
 		console.log('#test: ' + url('#test'));
 
 		console.log('***********************************');
+		console.log('***********************************');
 
 		console.log(url('domain', 'test.www.example.com/path/here'));
 		console.log(url('hostname', 'test.www.example.com/path/here'));
@@ -69,6 +70,11 @@
 		console.log(url('auth', 'http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
 		console.log(url('user', 'http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
 		console.log(url('pass', 'http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
+
+		console.log('***********************************');
+		console.log('***********************************');
+
+		console.log(url('-1', 'http://www.example.com/sub#hash'));
 
 	</script>
 </head>
