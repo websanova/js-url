@@ -11,8 +11,5 @@
     "name" : "Websanova"
   },
   "homepage" : "http://www.websanova.com",
-  "license": "MIT, GPL",
-  "dependencies" : {
-    "grunt-mocha" : "~0.1.7"
-  }
+  "license": "MIT, GPL"
 }

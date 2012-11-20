@@ -12,15 +12,15 @@ module.exports = function(grunt) {
         ' Licensed <%= pkg.license %> */'
     },
     lint: {
-      files: ['grunt.js', 'js-url.js' ]
+      files: [ 'grunt.js', '../js-url.js' ]
     },
     qunit: {
-      files: ['test/**/*.html']
+      files: ['index.html']
     },
     min: {
       dist: {
-        src: [ '<banner:meta.banner>', 'js-url.js' ],
-        dest: 'js-url.min.js'
+        src: [ '<banner:meta.banner>', '../js-url.js' ],
+        dest: '../js-url.min.js'
       }
     },
     watch: {
