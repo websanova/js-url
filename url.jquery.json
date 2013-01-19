@@ -1,0 +1,35 @@
+{
+  "name": "url",
+  "title": "url jQuery Plugin",
+  "description": "A jQuery url plugin",
+  "keywords": [
+    "websanova",
+    "url"
+  ],
+  "version": "v1.7.3",
+  "author": {
+    "name": "Websanova",
+    "email": "rob@websanova.com",
+    "url": "http://websanova.com"
+  },
+  "maintainers": [
+    {
+      "name": "Websanova",
+      "email": "rob@websanova.com",
+      "url": "http://websanova.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/websanova/js-url#license"
+    }
+  ],
+  "bugs": "https://github.com/websanova/js-url/issues",
+  "homepage": "http://websanova.com/tutorials/javascript/javascript-url-parser",
+  "docs": "https://github.com/websanova/js-url#url",
+  "download": "https://github.com/websanova/js-url/tags",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}
