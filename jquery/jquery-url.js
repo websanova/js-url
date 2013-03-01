@@ -54,6 +54,8 @@
 					param = params[i].split('=');
 					if(param[0] === arg) return param[1];
 				}
+
+				return null;
 			}
 	
 			return '';

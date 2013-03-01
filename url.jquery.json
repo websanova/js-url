@@ -1,12 +1,12 @@
 {
   "name": "url",
   "title": "url jQuery Plugin",
-  "description": "A jQuery url plugin",
+  "description": "A jQuery url plugin by Websanova",
   "keywords": [
     "websanova",
     "url"
   ],
-  "version": "1.7.5",
+  "version": "1.7.6",
   "author": {
     "name": "Websanova",
     "email": "rob@websanova.com",
