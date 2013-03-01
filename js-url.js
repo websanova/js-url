@@ -8,7 +8,7 @@
  * @license         This websanova JavaScript url is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github          http://github.com/websanova/js-url
- * @version			1.7.5
+ * @version			1.7.6
  *
  ******************************************/
 
@@ -71,6 +71,8 @@ window.url = (function() {
 				param = params[i].split('=');
 				if(param[0] === arg) return param[1];
 			}
+
+			return null;
 		}
 
 		return '';
