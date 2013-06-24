@@ -13,7 +13,6 @@ http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test
 url();            // http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 url('domain');    // example.com
 url('hostname');  // www.example.com
-url('tld');       // com
 url('sub');       // www
 url('.0')         // (an empty string)
 url('.1')         // www
