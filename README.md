@@ -56,6 +56,7 @@ url('protocol', 'https://www.example.com:8080/some/path');  // https
 etc...
 ```
 
+
 ## jQuery
 
 Also include is a jQuery version of the plugin that can be called via $.url() with all the same options.  If you're already using jQuery it may be better to use the jQuery version to avoid namespacing issues.
@@ -63,8 +64,8 @@ Also include is a jQuery version of the plugin that can be called via $.url() wi
 
 ## Resources
 
-* [jQuery Plugin Development Boilerplate](http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate)
-* [The Ultimate Guide to Writing jQuery Plugins](http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins)
+* [jQuery Plugin Development Boilerplate](http://www.websanova.com/blog/jquery/jquery-plugin-development-boilerplate)
+* [The Ultimate Guide to Writing jQuery Plugins](http://www.websanova.com/blog/jquery/the-ultimate-guide-to-writing-jquery-plugins)
 
 
 ## License

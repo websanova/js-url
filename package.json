@@ -1,6 +1,6 @@
 {
   "name": "js-url",
-  "version": "1.7.6",
+  "version": "1.8.0",
   "description": "A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzipped).",
   "main": "js-url.js",
   "repository": {
@@ -11,5 +11,10 @@
     "name" : "Websanova"
   },
   "homepage" : "http://www.websanova.com",
-  "license": "MIT, GPL"
+  "license": "MIT, GPL",
+  "dependencies": {
+    "grunt-contrib-qunit": "",
+    "grunt-contrib-uglify": "",
+    "grunt-contrib-jshint": ""
+  }
 }

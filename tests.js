@@ -16,10 +16,6 @@ test('hostname', function() {
   equal( window.url( 'hostname', url ), 'www.domain.com' );
 });
 
-test('tld', function() {
-  equal( window.url( 'tld', url ), 'com' );
-});
-
 test('sub', function() {
   equal( window.url( 'sub', url ), 'www' );
 });
@@ -73,13 +69,20 @@ test('url parts', function() {
 test('query string', function() {
   equal( window.url( '?', url ), 'query1=test&silly=willy' );
   equal( window.url( '?silly', url ), 'willy' );
-  equal( window.url( '?poo', url ), '' );
+  equal( window.url( '?poo', url ), null );
 });
 
 test('url fragment', function() {
   equal( window.url( '#', url ), 'test=hash&chucky=cheese' );
   equal( window.url( '#chucky', url ), 'cheese' );
-  equal( window.url( '#poo', url ), '' );
+  equal( window.url( '#poo', url ), null );
+});
+
+test('jQuery', function() {
+  equal( $.url( 'domain', url ), 'domain.com' );
+  equal( window.url( 'path', url ), '/path/index.html' );
+  equal( window.url( '?silly', url ), 'willy' );
+  equal( window.url( '#poo', url ), null );
 });
 
 }());

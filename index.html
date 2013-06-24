@@ -1,94 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<title>Websanova url()</title>
+  <meta charset="utf-8">
+  <title>js-url test</title>
 
-	<script type="text/javascript" src="./js-url.js"></script>
+  <link rel="stylesheet" href="lib/qunit/qunit.css" media="screen">
+  <script src="lib/jquery-1.10.1.min.js"></script>
+  <script src="lib/qunit/qunit.js"></script>
+  <script src="./js-url.js"></script>
 
-	<script type="text/javascript">
-
-		console.log(url());
-		console.log('err: ' + url('err'));
-		console.log('err: ' + url(''));
-
-		console.log('domain: ' + url('domain'));
-		console.log('hostname: ' + url('hostname'));
-		console.log('tld: ' + url('tld'));
-		console.log('sub: ' + url('sub'));
-		console.log('.0: ' + url('.0'));
-		console.log('.1: ' + url('.1'));
-		console.log('.2: ' + url('.2'));
-		console.log('.3: ' + url('.3'));
-		console.log('.-1: ' + url('.-1'));
-		console.log('.-2: ' + url('.-2'));
-		console.log('.-3: ' + url('.-3'));
-		console.log('.poo: ' + url('.poo'));
-		console.log('port: ' + url('port'));
-		console.log('protocol: ' + url('protocol'));
-		console.log('path: ' + url('path'));
-		console.log('file: ' + url('file'));
-		console.log('filename: ' + url('filename'));
-		console.log('fileext: ' + url('fileext'));
-		console.log('1: ' + url('1'));
-		console.log('2: ' + url('2'));
-		console.log('3: ' + url('3'));
-		console.log('-1: ' + url('-1'));
-		console.log('-2: ' + url('-2'));
-		console.log('-3: ' + url('-3'));
-		console.log('1: ' + url(1));
-		console.log('2: ' + url(2));
-		console.log('3: ' + url(3));
-		console.log('-1: ' + url(-1));
-		console.log('-2: ' + url(-2));
-		console.log('-3: ' + url(-3));
-		console.log('?: ' + url('?'));
-		console.log('?test: ' + url('?test'));
-		console.log('?poo: ' + url('?poo'));
-		console.log('#: ' + url('#'));
-		console.log('#this: ' + url('#this'));
-		console.log('#test: ' + url('#test'));
-
-		console.log('***********************************');
-		console.log('***********************************');
-
-		console.log(url('domain', 'test.www.example.com/path/here'));
-		console.log(url('hostname', 'test.www.example.com/path/here'));
-		console.log(url('sub', 'test.www.example.com/path/here'));
-		console.log(url('protocol', 'test.www.example.com/path/here'));
-		console.log(url('path', 'http://www.example.com:8080/some/path'));
-		console.log(url('port', 'http://www.example.com:8080/some/path'));
-		console.log(url('protocol', 'https://www.example.com:8080/some/path'));
-		console.log(url('protocol', 'sml://www.example.com:8080/some/path'));
-		console.log(url('hostname', 'sml://username:password@www.example.com:8080/some/path'));
-		console.log(url('auth', 'sml://rob:mofo123@www.example.com:8080/some/path'));
-		console.log(url('user', 'sml://rob:mofo123@www.example.com:8080/some/path'));
-		console.log(url('pass', 'sml://rob:mofo123a@www.example.com:8080/some/path'));
-		console.log(url('hostname', '//github.com'));
-		console.log(url('#', 'http://www.example.com/sub#hash'));
-		console.log(url('file', 'http://www.example.com/sub#hash'));
-		console.log(url('auth', 'http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
-		console.log(url('user', 'http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
-		console.log(url('pass', 'http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese'));
-
-		console.log('***********************************');
-		console.log('***********************************');
-
-		console.log(url('-1', 'http://www.example.com/sub#hash'));
-
-	</script>
 </head>
 <body>
+  <h1 id="qunit-header">Test Suite</h1>
+  <h2 id="qunit-banner"></h2>
+  <div id="qunit-testrunner-toolbar"></div>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">
+  </div>
 
+  <script src="tests.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

@@ -1,9 +1,6 @@
-/*global module:false*/
 module.exports = function(grunt) {
-
-  // Project configuration.
   grunt.initConfig({
-    pkg: '<json:package.json>',
+    pkg: '<json:url.jquery.json>',
     meta: {
       banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -11,21 +8,8 @@ module.exports = function(grunt) {
         '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
         ' Licensed <%= pkg.license %> */'
     },
-    lint: {
-      files: [ 'grunt.js', '../js-url.js' ]
-    },
     qunit: {
       files: ['index.html']
-    },
-    min: {
-      dist: {
-        src: [ '<banner:meta.banner>', '../js-url.js' ],
-        dest: '../js-url.min.js'
-      }
-    },
-    watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint test'
     },
     jshint: {
       options: {
@@ -38,16 +22,28 @@ module.exports = function(grunt) {
         sub: true,
         undef: true,
         boss: true,
-        eqnull: true
+        eqnull: true,
+        globals: {
+          'window': true,
+          'jQuery': true
+        }
       },
-      globals: {
-        'window' : true
+      files: {
+        src: ['./js-url.js']
       }
     },
-    uglify: {}
+    uglify: {
+      my_target: {
+        files: {
+          './js-url.min.js': ['./js-url.js']
+        }
+      }
+    }
   });
 
-  // Default task.
-  grunt.registerTask('default', 'lint qunit min');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
+  grunt.registerTask('default', [ 'qunit', 'jshint', 'uglify' ]);
 };
