@@ -62,6 +62,11 @@ etc...
 Also include is a jQuery version of the plugin that can be called via $.url() with all the same options.  If you're already using jQuery it may be better to use the jQuery version to avoid namespacing issues.
 
 
+## Grunt.js
+
+If you want to use Grunt you will need to install the required plugins locally using `npm install` in the root folder of your project.  If you need to setup Grunt on your system you can follow my [Setting up Grunt.js](http://www.websanova.com/blog/javascript/how-to-setup-grunt) guide.
+
+
 ## Resources
 
 * [jQuery Plugin Development Boilerplate](http://www.websanova.com/blog/jquery/jquery-plugin-development-boilerplate)
