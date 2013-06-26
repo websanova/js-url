@@ -2,6 +2,13 @@
 
 A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzipped).
 
+* [Download the lastest version of url](https://github.com/websanova/url/tags)
+
+
+## Related Plugins
+
+* [rgbHex](http://rgbhex.websanova.com) - An intelligent JavaScript rgb / hex converter.
+
 
 ## Examples
 
@@ -9,7 +16,7 @@ A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzippe
 http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 ```
 
-```javascript
+```js
 url();            // http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
 url('domain');    // example.com
 url('hostname');  // www.example.com
@@ -36,15 +43,15 @@ url(2);           // index.html
 url(-1);          // index.html
 url('?');         // query1=test&silly=willy
 url('?silly');    // willy
-url('?poo');      // (an empty string)
+url('?poo');      // null
 url('#');         // test=hash&chucky=cheese
 url('#chucky');   // cheese
-url('#poo');      // (an empty string)
+url('#poo');      // null
 ```
 
 We can also pass a url in and use all the same options on it:
 
-```javascript
+```js
 url('domain', 'test.www.example.com/path/here');            // example.com
 url('hostname', 'test.www.example.com/path/here');          // test.www.example.com
 url('sub', 'test.www.example.com/path/here');               // test.www

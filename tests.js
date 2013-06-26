@@ -2,7 +2,7 @@
 
 var url = 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
 
-module('js-url');
+module('url');
 
 test('url', function() {
   equal( window.url( ), window.location.href );

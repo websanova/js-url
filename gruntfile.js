@@ -29,13 +29,13 @@ module.exports = function(grunt) {
         }
       },
       files: {
-        src: ['./js-url.js']
+        src: ['./url.js']
       }
     },
     uglify: {
       my_target: {
         files: {
-          './js-url.min.js': ['./js-url.js']
+          './url.min.js': ['./url.js']
         }
       }
     }
