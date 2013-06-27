@@ -1,13 +1,6 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    pkg: '<json:package.json>',
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= pkg.license %> */'
-    },
+    pkg: grunt.file.readJSON('package.json'),
     qunit: {
       files: ['index.html']
     },
@@ -33,6 +26,9 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
+      },
       my_target: {
         files: {
           './url.min.js': ['./url.js']
