@@ -10,7 +10,7 @@
   "author": {
     "name" : "Websanova"
   },
-  "homepage" : "https://github.com/websanova/js-url",
+  "homepage" : "http://url.websanova.com",
   "license": "MIT, GPL",
   "dependencies": {
     "grunt-contrib-qunit": "",
