@@ -23,8 +23,8 @@ window.url = (function() {
         _l.port=(host[1]||'80');
         _l.pathname=('/' + url.slice(3, url.length).join('/').split('?')[0].split('#')[0]);
         var _p = _l.pathname;
-        
-        if (_p.split('.').length === 1 && _p[_p.length-1] !== '/') { _p += '/'; }
+
+        if (_p.charAt(_p.length-1) === '/') { _p=_p.substring(0, _p.length-1); }
         var _h = _l.hostname, _hs = _h.split('.'), _ps = _p.split('/');
 
         if (arg === 'hostname') { return _h; }
@@ -36,7 +36,7 @@ window.url = (function() {
         else if (arg === 'auth') { return _l.auth; }
         else if (arg === 'user') { return _l.auth.split(':')[0]; }
         else if (arg === 'pass') { return _l.auth.split(':')[1] || ''; }
-        else if (arg === 'path') { return _p; }
+        else if (arg === 'path') { return _l.pathname; }
         else if (arg.charAt(0) === '.')
         {
             arg = arg.substring(1);

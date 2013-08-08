@@ -10,6 +10,11 @@ A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzippe
 * [rgbHex](http://rgbhex.websanova.com) - An intelligent JavaScript rgb / hex converter.
 
 
+## Notes
+
+For path(1) and path(-1) will always act as if the path is in the form `/some/path/` regardless of whether the original path was `/some/path` or `/some/path/`.
+
+
 ## Examples
 
 ```html

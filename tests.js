@@ -49,6 +49,10 @@ test('protocol', function() {
 
 test('path', function() {
   equal( window.url( 'path', url ), '/path/index.html' );
+  equal( window.url( 'path', 'http://www.domain.com/first/second' ), '/first/second' );
+  equal( window.url( 'path', 'http://www.domain.com/first/second/' ), '/first/second/' );
+  equal( window.url( 'path', 'http://www.domain.com/first/second?test=foo' ), '/first/second' );
+  equal( window.url( 'path', 'http://www.domain.com/first/second/?test=foo' ), '/first/second/' );
 });
 
 test('file', function() {
@@ -64,6 +68,11 @@ test('url parts', function() {
   equal( window.url( '2', url ), 'index.html' );
   equal( window.url( '3', url ), '' );
   equal( window.url( '-1', url ), 'index.html' );
+
+  equal( window.url( '1', 'http://www.domain.com/first/second' ), 'first' );
+  equal( window.url( '1', 'http://www.domain.com/first/second/' ), 'first' );
+  equal( window.url( '-1', 'http://www.domain.com/first/second?test=foo' ), 'second' );
+  equal( window.url( '-1', 'http://www.domain.com/first/second/?test=foo' ), 'second' );
 });
 
 test('query string', function() {

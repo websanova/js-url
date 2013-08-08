@@ -1,6 +1,6 @@
 {
   "name": "url",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzipped).",
   "main": "url.js",
   "repository": {
