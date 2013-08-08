@@ -53,6 +53,8 @@ test('path', function() {
   equal( window.url( 'path', 'http://www.domain.com/first/second/' ), '/first/second/' );
   equal( window.url( 'path', 'http://www.domain.com/first/second?test=foo' ), '/first/second' );
   equal( window.url( 'path', 'http://www.domain.com/first/second/?test=foo' ), '/first/second/' );
+  equal( window.url( 'path', 'http://www.domain.com/path#anchor' ), '/path' );
+  equal( window.url( 'path', 'http://www.domain.com/path/#anchor' ), '/path/' );
 });
 
 test('file', function() {
