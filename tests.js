@@ -59,15 +59,11 @@ test('path', function() {
   equal( window.url( 'path', 'http://www.domain.com/path/#anchor' ), '/path/' );
   equal( window.url( 'path', 'http://www.domain.com' ), '' );
   equal( window.url( 'path', 'http://www.domain.com/' ), '/' );
-  equal( window.url( 'path', 'http://www.domain.com#anchor' ), '' );
   equal( window.url( 'path', 'http://www.domain.com/#anchor' ), '/' );
-  equal( window.url( 'path', 'http://www.domain.com?test=foo' ), '' );
   equal( window.url( 'path', 'http://www.domain.com/?test=foo' ), '/' );
   equal( window.url( 'path', 'http://www.domain.com:80' ), '' );
   equal( window.url( 'path', 'http://www.domain.com:80/' ), '/' );
-  equal( window.url( 'path', 'http://www.domain.com:80#anchor' ), '' );
   equal( window.url( 'path', 'http://www.domain.com:80/#anchor' ), '/' );
-  equal( window.url( 'path', 'http://www.domain.com:80?test=foo' ), '' );
   equal( window.url( 'path', 'http://www.domain.com:80/?test=foo' ), '/' );
 });
 
