@@ -51,10 +51,24 @@ test('path', function() {
   equal( window.url( 'path', url ), '/path/index.html' );
   equal( window.url( 'path', 'http://www.domain.com/first/second' ), '/first/second' );
   equal( window.url( 'path', 'http://www.domain.com/first/second/' ), '/first/second/' );
+  equal( window.url( 'path', 'http://www.domain.com:8080/first/second' ), '/first/second' );
+  equal( window.url( 'path', 'http://www.domain.com:8080/first/second/' ), '/first/second/' );
   equal( window.url( 'path', 'http://www.domain.com/first/second?test=foo' ), '/first/second' );
   equal( window.url( 'path', 'http://www.domain.com/first/second/?test=foo' ), '/first/second/' );
   equal( window.url( 'path', 'http://www.domain.com/path#anchor' ), '/path' );
   equal( window.url( 'path', 'http://www.domain.com/path/#anchor' ), '/path/' );
+  equal( window.url( 'path', 'http://www.domain.com' ), '' );
+  equal( window.url( 'path', 'http://www.domain.com/' ), '/' );
+  equal( window.url( 'path', 'http://www.domain.com#anchor' ), '' );
+  equal( window.url( 'path', 'http://www.domain.com/#anchor' ), '/' );
+  equal( window.url( 'path', 'http://www.domain.com?test=foo' ), '' );
+  equal( window.url( 'path', 'http://www.domain.com/?test=foo' ), '/' );
+  equal( window.url( 'path', 'http://www.domain.com:80' ), '' );
+  equal( window.url( 'path', 'http://www.domain.com:80/' ), '/' );
+  equal( window.url( 'path', 'http://www.domain.com:80#anchor' ), '' );
+  equal( window.url( 'path', 'http://www.domain.com:80/#anchor' ), '/' );
+  equal( window.url( 'path', 'http://www.domain.com:80?test=foo' ), '' );
+  equal( window.url( 'path', 'http://www.domain.com:80/?test=foo' ), '/' );
 });
 
 test('file', function() {
@@ -87,13 +101,6 @@ test('url fragment', function() {
   equal( window.url( '#', url ), 'test=hash&chucky=cheese' );
   equal( window.url( '#chucky', url ), 'cheese' );
   equal( window.url( '#poo', url ), null );
-});
-
-test('jQuery', function() {
-  equal( $.url( 'domain', url ), 'domain.com' );
-  equal( $.url( 'path', url ), '/path/index.html' );
-  equal( $.url( '?silly', url ), 'willy' );
-  equal( $.url( '#poo', url ), null );
 });
 
 }());

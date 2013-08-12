@@ -22,6 +22,9 @@ window.url = (function() {
         _l.hostname=host[0];
         _l.port=(host[1]||'80');
         _l.pathname=('/' + url.slice(3, url.length).join('/').split('?')[0].split('#')[0]);
+        if (_l.pathname == '/' && _ls.indexOf(_l.hostname + (host[1] ? ':' + host[1] : '' )  + '/') == -1) {
+            _l.pathname=_l.pathname.substr(1);
+        }
         var _p = _l.pathname;
 
         if (_p.charAt(_p.length-1) === '/') { _p=_p.substring(0, _p.length-1); }
@@ -71,7 +74,7 @@ window.url = (function() {
     };
 })();
 
-if(jQuery) {
+if(typeof jQuery !== 'undefined') {
     jQuery.extend({
         url: function(arg, url) { return window.url(arg, url); }
     });
