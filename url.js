@@ -71,7 +71,7 @@ window.url = (function() {
     };
 })();
 
-if(jQuery) {
+if(typeof jQuery !== 'undefined') {
     jQuery.extend({
         url: function(arg, url) { return window.url(arg, url); }
     });

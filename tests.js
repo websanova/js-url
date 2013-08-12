@@ -89,11 +89,4 @@ test('url fragment', function() {
   equal( window.url( '#poo', url ), null );
 });
 
-test('jQuery', function() {
-  equal( $.url( 'domain', url ), 'domain.com' );
-  equal( $.url( 'path', url ), '/path/index.html' );
-  equal( $.url( '?silly', url ), 'willy' );
-  equal( $.url( '#poo', url ), null );
-});
-
 }());
