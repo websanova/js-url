@@ -2,12 +2,8 @@
 
 A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzipped).
 
+* [View the url demo](http://url.websanova.com)
 * [Download the lastest version of url](https://github.com/websanova/url/tags)
-
-
-## Related Plugins
-
-* [rgbHex](http://rgbhex.websanova.com) - An intelligent JavaScript rgb / hex converter.
 
 
 ## Notes
