@@ -21,7 +21,7 @@ window.url = (function() {
         _l.protocol=url[0];
         _l.hostname=host[0];
         _l.port=(host[1]||'80');
-        _l.pathname=('/' + url.slice(3, url.length).join('/').split('?')[0].split('#')[0]);
+        _l.pathname=( (url.length > 3 ? '/' : '') + url.slice(3, url.length).join('/').split('?')[0].split('#')[0]);
         var _p = _l.pathname;
 
         if (_p.charAt(_p.length-1) === '/') { _p=_p.substring(0, _p.length-1); }
@@ -71,7 +71,7 @@ window.url = (function() {
     };
 })();
 
-if(jQuery) {
+if(typeof jQuery !== 'undefined') {
     jQuery.extend({
         url: function(arg, url) { return window.url(arg, url); }
     });
