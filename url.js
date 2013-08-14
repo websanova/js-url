@@ -61,7 +61,7 @@ window.url = (function() {
             for(var i=0,ii=params.length; i<ii; i++)
             {
                 param = params[i].split('=');
-                if(param[0] === arg) { return param[1]; }
+                if(param[0] === arg) { return param[1] || ''; }
             }
 
             return null;
