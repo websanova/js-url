@@ -20,7 +20,7 @@ window.url = (function() {
 
         _l.protocol=url[0];
         _l.hostname=host[0];
-        _l.port=(host[1] || (_l.protocol.split(':')[0].toLowerCase() == 'https') ? '443' : '80');
+        _l.port=(host[1] || (_l.protocol.split(':')[0].toLowerCase() === 'https') ? '443' : '80');
         _l.pathname=( (url.length > 3 ? '/' : '') + url.slice(3, url.length).join('/').split('?')[0].split('#')[0]);
         var _p = _l.pathname;
 
@@ -31,7 +31,7 @@ window.url = (function() {
         else if (arg === 'domain') { return _hs.slice(-2).join('.'); }
         //else if (arg === 'tld') { return _hs.slice(-1).join('.'); }
         else if (arg === 'sub') { return _hs.slice(0, _hs.length - 2).join('.'); }
-        else if (arg === 'port') { return _l.port }
+        else if (arg === 'port') { return _l.port; }
         else if (arg === 'protocol') { return _l.protocol.split(':')[0]; }
         else if (arg === 'auth') { return _l.auth; }
         else if (arg === 'user') { return _l.auth.split(':')[0]; }
