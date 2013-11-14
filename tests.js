@@ -43,8 +43,10 @@ test('pass', function() {
 test('port', function() {
   deepEqual( window.url( 'port', url ), '80' );
   deepEqual( window.url( 'port', url.toUpperCase() ), '80' );
+  deepEqual( window.url( 'port', "http://example.com:80" ), '80' );
   deepEqual( window.url( 'port', urlHttps ), '443' );
   deepEqual( window.url( 'port', urlHttps.toUpperCase() ), '443' );
+  deepEqual( window.url( 'port', "https://example.com:443" ), '443' );
 });
 
 test('protocol', function() {
