@@ -2,6 +2,7 @@
 
 var url = 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
 var urlHttps = 'https://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
+var urlIp = 'https://rob:abcd1234@1.2.3.4/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
 
 module('url');
 
@@ -11,6 +12,7 @@ test('url', function() {
 
 test('domain', function() {
   deepEqual( window.url( 'domain', url ), 'domain.com' );
+  deepEqual( window.url( 'domain', urlIp ), '1.2.3.4' );
 });
 
 test('hostname', function() {

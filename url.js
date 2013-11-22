@@ -28,7 +28,10 @@ window.url = (function() {
         var _h = _l.hostname, _hs = _h.split('.'), _ps = _p.split('/');
 
         if (arg === 'hostname') { return _h; }
-        else if (arg === 'domain') { return _hs.slice(-2).join('.'); }
+        else if (arg === 'domain') {
+            if (/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/.test(_h)) { return _h; }
+            return _hs.slice(-2).join('.'); 
+        }
         //else if (arg === 'tld') { return _hs.slice(-1).join('.'); }
         else if (arg === 'sub') { return _hs.slice(0, _hs.length - 2).join('.'); }
         else if (arg === 'port') { return _l.port; }
