@@ -5,6 +5,10 @@ A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzippe
 * [View the url demo](http://url.websanova.com)
 * [Download the lastest version of url](https://github.com/websanova/url/tags)
 
+Also available for Node.js.
+
+* [Download the lastest version of node-url](https://github.com/websanova/node-url/tags)
+
 
 ## Notes
 
