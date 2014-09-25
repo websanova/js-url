@@ -4,7 +4,7 @@ window.url = (function() {
     }
     
     return function(arg, url) {
-        var _ls = url || window.location.toString();
+        var _ls = url || window.decodeURI(window.location.toString());
 
         if (!arg) { return _ls; }
         else { arg = arg.toString(); }
