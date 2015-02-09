@@ -3,7 +3,7 @@
 A simple, lightweight url parser for JavaScript (~1.6 Kb minified, ~0.6Kb gzipped).
 
 * [View the url demo](http://url.websanova.com)
-* [Download the lastest version of url](https://github.com/websanova/url/tags)
+* [Download the lastest version of url](https://github.com/websanova/js-url/tags)
 
 Also available for Node.js.
 
@@ -81,7 +81,6 @@ If you want to use Grunt you will need to install the required plugins locally u
 ## Resources
 
 * [More jQuery plugins by Websanova](http://websanova.com/plugins)
-* [Websanova JavaScript Extensions Project](http://websanova.com/extensions)
 * [jQuery Plugin Development Boilerplate](http://wboiler.websanova.com)
 * [The Ultimate Guide to Writing jQuery Plugins](http://www.websanova.com/blog/jquery/the-ultimate-guide-to-writing-jquery-plugins)
 
