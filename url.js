@@ -60,11 +60,18 @@ window.url = (function() {
 
             arg = arg.substring(1);
             params = params.split('&');
+            result = [];
 
             for(var i=0,ii=params.length; i<ii; i++)
             {
                 param = params[i].split('=');
-                if(param[0] === arg) { return param[1] || ''; }
+                if(param[0] === arg) { result.push(param[1] || ''); }
+            }
+
+            if (result.length == 1) {
+                return result[0];
+            } else if (result.length > 1) {
+                return result;
             }
 
             return null;
