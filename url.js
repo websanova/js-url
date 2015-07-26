@@ -2,6 +2,10 @@ window.url = (function() {
     function isNumeric(arg) {
       return !isNaN(parseFloat(arg)) && isFinite(arg);
     }
+
+    function decode(str) {
+      return decodeURIComponent(str.replace(/\+/g, ' '));
+    }
     
     return function(arg, url) {
         var _ls = url || window.location.toString();
@@ -56,7 +60,7 @@ window.url = (function() {
             if(arg.charAt(0) === '?') { params = (params.split('?')[1] || '').split('#')[0]; }
             else if(arg.charAt(0) === '#') { params = (params.split('#')[1] || ''); }
 
-            if(!arg.charAt(1)) { return params; }
+            if(!arg.charAt(1)) { return (params ? decode(params) : params); }
 
             arg = arg.substring(1);
             params = params.split('&');
@@ -64,7 +68,7 @@ window.url = (function() {
             for(var i=0,ii=params.length; i<ii; i++)
             {
                 param = params[i].split('=');
-                if(param[0] === arg) { return param[1] || ''; }
+                if(param[0] === arg) { return (param[1] ? decode(param[1]) : param[1]) || ''; }
             }
 
             return null;

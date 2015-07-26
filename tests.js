@@ -109,6 +109,9 @@ test('query string', function() {
   deepEqual( window.url( '?poo', 'http://domain.com?poo' ), '' );
   deepEqual( window.url( '?poo', 'http://domain.com?' ), null );
   deepEqual( window.url( '?poo', 'http://domain.com' ), null );
+
+  deepEqual( window.url( '?poo', 'http://domain.com?poo=a+b' ), 'a b' );
+  deepEqual( window.url( '?poo', 'http://domain.com?poo=javascript%20decode%20uri%20%2B%20sign%20to%20space' ), 'javascript decode uri + sign to space' );
 });
 
 test('url fragment', function() {
