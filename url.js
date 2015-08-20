@@ -55,7 +55,7 @@ window.url = (function() {
         else if (arg === 'fileext') { return _ps.slice(-1)[0].split('.')[1] || ''; }
         else if (arg.charAt(0) === '?' || arg.charAt(0) === '#')
         {
-            var params = _ls, param = null;
+            var params = _ls;
 
             if(arg.charAt(0) === '?') { params = (params.split('?')[1] || '').split('#')[0]; }
             else if(arg.charAt(0) === '#') { params = (params.split('#')[1] || ''); }
@@ -67,8 +67,10 @@ window.url = (function() {
 
             for(var i=0,ii=params.length; i<ii; i++)
             {
-                param = params[i].split('=');
-                if(param[0] === arg) { return (param[1] ? decode(param[1]) : param[1]) || ''; }
+                var index = params[i].indexOf('=');
+                var name = params[i].substring(0, index);
+                var value = params[i].substr(index + 1);
+                if(name === arg) { return (value ? decode(value) : value) || ''; }
             }
 
             return null;
