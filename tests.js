@@ -112,6 +112,8 @@ test('query string', function() {
 
   deepEqual( window.url( '?poo', 'http://domain.com?poo=a+b' ), 'a b' );
   deepEqual( window.url( '?poo', 'http://domain.com?poo=javascript%20decode%20uri%20%2B%20sign%20to%20space' ), 'javascript decode uri + sign to space' );
+
+  deepEqual( window.url( '?key', 'http://domain.com?key=value=va?key2=value' ), 'value=va');
 });
 
 test('url fragment', function() {

@@ -67,7 +67,8 @@ window.url = (function() {
 
             for(var i=0,ii=params.length; i<ii; i++)
             {
-                param = params[i].split('=');
+                param = params[i].split(/(.*?)=(.*)/).filter(Boolean);
+
                 if(param[0] === arg) { return (param[1] ? decode(param[1]) : param[1]) || ''; }
             }
 
