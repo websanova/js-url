@@ -2,7 +2,7 @@
 
 A simple, lightweight url parser for JavaScript (~1.7 Kb minified, ~0.7Kb gzipped).
 
-* [Change Log](/websanova/js-url/wiki/Change-Log)
+* [Change Log](https://github.com/websanova/js-url/wiki/Change-Log)
 * [View the url demo](http://url.websanova.com)
 * [Download the lastest version of url](https://github.com/websanova/js-url/tags)
 
