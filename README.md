@@ -8,7 +8,8 @@ A simple, lightweight url parser for JavaScript (~1.7 Kb minified, ~0.7Kb gzippe
 
 Also available for Node.js.
 
-* [Download the lastest version of node-url](https://github.com/websanova/node-url/tags)
+* [On GitHub as node-url](https://github.com/websanova/node-url)
+* [On Npm as wurl](https://www.npmjs.com/package/wurl)
 
 ## Notes
 
