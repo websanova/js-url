@@ -62,6 +62,14 @@ url('#chucky');   // cheese
 url('#poo');      // undefined
 ```
 
+Also supports `mailto`.
+
+```js
+url('protocol', 'mailto:rob@websanova.com'); // mailto
+url('email', 'mailto:rob@websanova.com');    // rob@websanova.com
+
+```
+
 We can also pass a url in and use all the same options on it:
 
 ```js
