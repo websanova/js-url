@@ -199,7 +199,7 @@ test('query string', function() {
   deepEqual( window.url( '?poo', 'http://domain.com:400?poo=a:b' ), 'a:b' );
   deepEqual( window.url( '?poo', 'http://domain.com:400? & & &' ), undefined );
 
-  deepEqual( window.url( '?field[0]', 'http://domain.com?field[0]=zero&field[1]=one' ), 'zero' );
+  deepEqual( window.url( '?field[0]', 'http://domain.com?field[0]=zero&firled[1]=one' ), 'zero' );
   deepEqual( window.url( '?field', 'http://domain.com?field[0]=zero&field[1]=one&var=test' ), ['zero', 'one'] );
   deepEqual( window.url( '?field', 'http://domain.com?field[0]=zero&field[3]=one&var=test' ), ['zero', undefined, undefined, 'one'] );
   deepEqual( window.url( '?var', 'http://domain.com?field[0]=zero&field[3]=one&var=test' ), 'test' );
@@ -217,12 +217,19 @@ test('hash string', function() {
   deepEqual( window.url( '#poo', 'http://domain.com#' ), undefined );
   deepEqual( window.url( '#poo', 'http://domain.com' ), undefined );
 
-  deepEqual( window.url( '#field[0]', 'http://domain.com#field[0]=zero&field[1]=one' ), 'zero' );
+  deepEqual( window.url( '#field[0]', 'http://domain.com#field[0]=zero&firled[1]=one' ), 'zero' );
   deepEqual( window.url( '#field', 'http://domain.com#field[0]=zero&field[1]=one&var=test' ), ['zero', 'one'] );
   deepEqual( window.url( '#field', 'http://domain.com#field[0]=zero&field[3]=one&var=test' ), ['zero', undefined, undefined, 'one'] );
   deepEqual( window.url( '#var', 'http://domain.com#field[0]=zero&field[3]=one&var=test' ), 'test' );
   deepEqual( window.url( '#', 'http://domain.com#field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
 });
+
+if (window.url('tld?')) {
+  test('tld', function() {
+    deepEqual( window.url( 'tld', 'www.example.ly' ), 'ly' );
+    deepEqual( window.url( 'tld', 'www.example.xyz' ), 'xyz' );
+  });
+}
 
 if (typeof jQuery !== 'undefined') {
   test('jQuery', function() {
