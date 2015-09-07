@@ -1,0 +1,20 @@
+{
+  "name": "js-url",
+  "description": "A simple url parser for JavaScript.",
+  "keywords": ["js", "javascript", "url", "parser"],
+  "homepage": "https://github.com/websanova/js-url",
+  "license": "MIT",
+  "moduleType": "globals",
+  "main": [
+    "url.js"
+  ],
+  "ignore": [
+    "lib",
+    "gruntfile.js",
+    "index.html",
+    "package.json",
+    "tests.js",
+    "url.jquery.json"
+  ],
+  "dependencies": {}
+}
