@@ -1,5 +1,5 @@
 {
-  "name": "url",
+  "name": "js-url",
   "version": "2.0.1",
   "description": "A simple, lightweight url parser for JavaScript (~1.7 Kb minified, ~0.7Kb gzipped).",
   "main": "url.js",
