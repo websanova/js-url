@@ -12,7 +12,6 @@
   ],
   "homepage": "https://github.com/websanova/js-url",
   "license": "MIT",
-  "moduleType": "globals",
   "main": [
     "url.js",
   ],
