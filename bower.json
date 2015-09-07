@@ -13,7 +13,7 @@
   "homepage": "https://github.com/websanova/js-url",
   "license": "MIT",
   "main": [
-    "url.js",
+    "url.js"
   ],
   "ignore": [
     "lib",
