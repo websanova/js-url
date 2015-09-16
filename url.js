@@ -28,7 +28,12 @@ window.url = (function() {
             arg2 = arg.substring(1);
 
         for (var i in split) {
-            field = split[i].split(/=(.*)/);
+            var tmpS = /^([^\=]+)\=(.*)$/.exec(split[i]);
+            if (tmpS!==null && tmpS.length>=3) {
+                field = [tmpS[1], tmpS[2]];
+            } else {
+                field = [split[i]];
+            }
 
             if (field[0].replace(/\s/g, '') !== '') {
                 field[1] = _d(field[1] || '');
@@ -68,20 +73,42 @@ window.url = (function() {
 
         if (url.match(/^mailto:[^\/]/)) {
             _l.protocol = 'mailto';
-            _l.email = url.split(/mailto\:/)[1];
+            _l.email = url.split("mailto:")[1];
         }
         else {
 
             // Anchor.
-            tmp = url.split(/#(.*)/);
+            _l.hash = undefined;
+            if(url.indexOf('#')!==-1) {
+                var tmpH = /^[^\#]+\#(.*)$/.exec(url);
+
+                if (tmpH!==null && tmpH.length>=2) {
+                    _l.hash = tmpH[1];
+                    tmp = [url.replace("#"+_l.hash, ""), _l.hash];
+                } else {
+                    tmp = [url];
+                }
+
+            } else {
+                tmp = [url];
+            }
+
             _l.hash = tmp[1] ? tmp[1] : undefined;
 
             // Return anchor parts.
             if (_l.hash && arg.match(/^#/)) { return _f(arg, _l.hash); }
             
             // Query
-            tmp = tmp[0].split(/\?(.*)/);
-            _l.query = tmp[1] ? tmp[1] : undefined;
+            _l.query = undefined;
+            if(tmp[0].indexOf('?')!==-1) {
+                var tmpQ = /^[^\?]*\?(.*)$/.exec(tmp[0]);
+                if (tmpQ!==null && tmpQ.length>=2) {
+                    _l.query = tmpQ[1];
+                }
+                tmp = [tmp[0].replace("?"+_l.query, ""), _l.query];
+            } else {
+                tmp = [tmp[0]];
+            }
 
             // Return query parts.
             if (_l.query && arg.match(/^\?/)) { return _f(arg, _l.query); }
@@ -91,8 +118,16 @@ window.url = (function() {
             _l.protocol = tmp[1] ? tmp[0].toLowerCase() : undefined;
 
             // Path.
-            tmp = (tmp[1] ? tmp[1] : tmp[0]).split(/(\/.*)/);
-            _l.path = tmp[1] ? tmp[1] : '';
+            var purl = tmp[1] ? tmp[1] : tmp[0],
+                tmpArr = /^[^\/]*(\/.*)$/.exec(purl);
+            _l.path = '';
+            if (tmpArr!==null && tmpArr.length>=2) {
+                _l.path = tmpArr[1];
+                tmp = [purl.replace(_l.path, ""), _l.path];
+            } else {
+                tmp = [purl];
+            }
+
 
             // Clean up path.
             _l.path = _l.path.replace(/^([^\/])/, '/$1').replace(/\/$/, '');
@@ -103,26 +138,32 @@ window.url = (function() {
 
             // File.
             tmp2 = _i('/-1', _l.path.substring(1));
-            tmp2 = tmp2.split(/\.(.*)/);
 
             // Filename and fileext.
-            if (tmp2[1]) {
+            if(tmp2 && tmp2.indexOf('.')!==-1) {
+                tmp2 = tmp2.split(".");
                 _l.file = tmp2[0] + '.' + tmp2[1];
                 _l.filename = tmp2[0];
                 _l.fileext = tmp2[1];
             }
 
             // Port.
-            tmp = tmp[0].split(/\:([0-9]+)$/);
-            _l.port = tmp[1] ? tmp[1] : undefined;
+            _l.port = undefined;
+            if (/^.*\:[0-9]+$/.test(tmp[0])) {
+                tmp = tmp[0].split(":");
+                _l.port = tmp[1];
+            }
 
             // Auth.
-            tmp = tmp[0].split(/@/);
-            _l.auth = tmp[1] ? tmp[0] : undefined;
+            _l.auth = undefined;
+            if (/.*@.*/.test(tmp[0])) {
+                tmp = tmp[0].split("@");
+                _l.auth = tmp[0];
+            }
 
             // User and pass.
-            if (_l.auth) {
-                tmp2 = _l.auth.split(/\:(.*)/);
+            if (_l.auth && /^.*\:.*$/.test(_l.auth)) {
+                tmp2 = _l.auth.split(":");
                 _l.user = tmp2[0];
                 _l.pass = tmp2[1];
             }
