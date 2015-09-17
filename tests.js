@@ -86,6 +86,15 @@ else {
   });
 }
 
+test('mailto', function() {
+  deepEqual( window.url( 'email', 'mailto:rob@websanova.com' ), 'rob@websanova.com' );
+  deepEqual( window.url( 'protocol', 'mailto:rob@websanova.com' ), 'mailto' );
+  deepEqual( window.url( 'email', 'mailto:/rob@websanova.com' ), undefined );
+  deepEqual( window.url( 'email', 'mailto://rob@websanova.com' ), undefined );
+  deepEqual( window.url( 'protocol', 'mailto:/rob@websanova.com' ), 'http' );
+  deepEqual( window.url( 'mailto:', 'mailto:/rob@websanova.com' ), undefined );
+});
+
 test('hostname', function() {
   deepEqual( window.url( 'hostname', url ), 'www.domain.com' );
   deepEqual( window.url( 'hostname', urlIp ), '1.2.3.4' );
@@ -101,14 +110,7 @@ test('domain parts', function() {
 
 test('auth', function() {
   deepEqual( window.url( 'auth', url ), 'rob:abcd1234' );
-});
-
-test('user', function() {
   deepEqual( window.url( 'user', url ), 'rob' );
-  deepEqual( window.url( 'email', 'mailto:rob@websanova.com' ), 'rob@websanova.com' );
-});
-
-test('pass', function() {
   deepEqual( window.url( 'pass', url ), 'abcd1234' );
 });
 
@@ -124,6 +126,7 @@ test('port', function() {
   deepEqual( window.url( 'port', 'http://domain.com:443' ), '443' );
   deepEqual( window.url( 'port', 'http://domain.com' ), '80' );
   deepEqual( window.url( 'port', 'https://domain.com' ), '443' );
+  deepEqual( window.url( 'port', 'rob@domain.com' ), '80' );
 });
 
 test('protocol', function() {
@@ -135,7 +138,7 @@ test('protocol', function() {
   deepEqual( window.url( 'protocol', 'domain.com:443' ), 'https' );
   deepEqual( window.url( 'protocol', 'https://domain.com:443' ), 'https' );
   deepEqual( window.url( 'protocol', 'https://domain.com:80' ), 'https' );
-  deepEqual( window.url( 'protocol', 'mailto:rob@websanova.com' ), 'mailto' );
+  deepEqual( window.url( 'protocol', 'rob@domain.com' ), 'http' );
 });
 
 test('path', function() {
@@ -166,6 +169,9 @@ test('file', function() {
   deepEqual( window.url( 'file', url ), 'index.html' );
   deepEqual( window.url( 'filename', url ), 'index' );
   deepEqual( window.url( 'fileext', url ), 'html' );
+  deepEqual( window.url( 'file', 'http://domain.com' ), undefined );
+  deepEqual( window.url( 'filename', 'http://domain.com' ), undefined );
+  deepEqual( window.url( 'fileext', 'http://domain.com' ), undefined );
 });
 
 test('url parts', function() {
@@ -198,6 +204,8 @@ test('query string', function() {
   deepEqual( window.url( '?key', 'http://domain.com?key=value=va?key2=value' ), 'value=va?key2=value');
   deepEqual( window.url( '?poo', 'http://domain.com:400?poo=a:b' ), 'a:b' );
   deepEqual( window.url( '?poo', 'http://domain.com:400? & & &' ), undefined );
+  deepEqual( window.url( '?test', 'http://domain.com?test=45#5' ), '45' );
+  deepEqual( window.url( '?test', 'http://domain.com?test=45?5' ), '45?5' );
 
   deepEqual( window.url( '?field[0]', 'http://domain.com?field[0]=zero&firled[1]=one' ), 'zero' );
   deepEqual( window.url( '?field', 'http://domain.com?field[0]=zero&field[1]=one&var=test' ), ['zero', 'one'] );
@@ -216,6 +224,7 @@ test('hash string', function() {
   deepEqual( window.url( '#poo', 'http://domain.com#poo' ), '' );
   deepEqual( window.url( '#poo', 'http://domain.com#' ), undefined );
   deepEqual( window.url( '#poo', 'http://domain.com' ), undefined );
+  deepEqual( window.url( '#test', 'http://domain.com#test=45#5' ), '45#5' );
 
   deepEqual( window.url( '#field[0]', 'http://domain.com#field[0]=zero&firled[1]=one' ), 'zero' );
   deepEqual( window.url( '#field', 'http://domain.com#field[0]=zero&field[1]=one&var=test' ), ['zero', 'one'] );

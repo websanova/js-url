@@ -28,24 +28,29 @@ window.url = (function() {
             arg2 = arg.substring(1);
 
         for (var i in split) {
-            field = split[i].split(/=(.*)/);
+            field = split[i].match(/(.*?)=(.*)/);
 
-            if (field[0].replace(/\s/g, '') !== '') {
-                field[1] = _d(field[1] || '');
+            // TODO: regex should be able to handle this.
+            if ( ! field) {
+                field = [split[i], split[i], ''];
+            }
+
+            if (field[1].replace(/\s/g, '') !== '') {
+                field[2] = _d(field[2] || '');
 
                 // If we have a match just return it right away.
-                if (arg2 === field[0]) { return field[1]; }
+                if (arg2 === field[1]) { return field[2]; }
 
                 // Check for array pattern.
-                tmp = field[0].match(/(.*)\[([0-9]+)\]/);
+                tmp = field[1].match(/(.*)\[([0-9]+)\]/);
 
                 if (tmp) {
                     params[tmp[1]] = params[tmp[1]] || [];
                 
-                    params[tmp[1]][tmp[2]] = field[1];
+                    params[tmp[1]][tmp[2]] = field[2];
                 }
                 else {
-                    params[field[0]] = field[1];    
+                    params[field[1]] = field[2];
                 }
             }
         }
@@ -66,69 +71,80 @@ window.url = (function() {
 
         arg = arg.toString();
 
-        if (url.match(/^mailto:[^\/]/)) {
+        if (tmp = url.match(/^mailto:([^\/].+)/)) {
             _l.protocol = 'mailto';
-            _l.email = url.split(/mailto\:/)[1];
+            _l.email = tmp[1];
         }
         else {
 
-            // Anchor.
-            tmp = url.split(/#(.*)/);
-            _l.hash = tmp[1] ? tmp[1] : undefined;
+            // Hash.
+            if (tmp = url.match(/(.*?)#(.*)/)) {
+                _l.hash = tmp[2];
+                url = tmp[1];
+            }
 
-            // Return anchor parts.
+            // Return hash parts.
             if (_l.hash && arg.match(/^#/)) { return _f(arg, _l.hash); }
-            
+
             // Query
-            tmp = tmp[0].split(/\?(.*)/);
-            _l.query = tmp[1] ? tmp[1] : undefined;
+            if (tmp = url.match(/(.*?)\?(.*)/)) {
+                _l.query = tmp[2];
+                url = tmp[1];
+            }
 
             // Return query parts.
             if (_l.query && arg.match(/^\?/)) { return _f(arg, _l.query); }
 
             // Protocol.
-            tmp = tmp[0].split(/\:?\/\//);
-            _l.protocol = tmp[1] ? tmp[0].toLowerCase() : undefined;
+            if (tmp = url.match(/(.*?)\:?\/\/(.*)/)) {
+                _l.protocol = tmp[1].toLowerCase();
+                url = tmp[2];
+            }
 
             // Path.
-            tmp = (tmp[1] ? tmp[1] : tmp[0]).split(/(\/.*)/);
-            _l.path = tmp[1] ? tmp[1] : '';
+            if (tmp = url.match(/(.*?)(\/.*)/)) {
+                _l.path = tmp[2];
+                url = tmp[1];
+            }
 
             // Clean up path.
-            _l.path = _l.path.replace(/^([^\/])/, '/$1').replace(/\/$/, '');
+            _l.path = (_l.path || '').replace(/^([^\/])/, '/$1').replace(/\/$/, '');
 
             // Return path parts.
             if (arg.match(/^[\-0-9]+$/)) { arg = arg.replace(/^([^\/])/, '/$1'); }
             if (arg.match(/^\//)) { return _i(arg, _l.path.substring(1)); }
 
             // File.
-            tmp2 = _i('/-1', _l.path.substring(1));
-            tmp2 = tmp2.split(/\.(.*)/);
-
-            // Filename and fileext.
-            if (tmp2[1]) {
-                _l.file = tmp2[0] + '.' + tmp2[1];
-                _l.filename = tmp2[0];
-                _l.fileext = tmp2[1];
+            tmp = _i('/-1', _l.path.substring(1));
+            
+            if (tmp && (tmp = tmp.match(/(.*?)\.(.*)/))) {
+                _l.file = tmp[0];
+                _l.filename = tmp[1];
+                _l.fileext = tmp[2];
             }
 
             // Port.
-            tmp = tmp[0].split(/\:([0-9]+)$/);
-            _l.port = tmp[1] ? tmp[1] : undefined;
+            if (tmp = url.match(/(.*)\:([0-9]+)$/)) {
+                _l.port = tmp[2];
+                url = tmp[1];
+            }
 
             // Auth.
-            tmp = tmp[0].split(/@/);
-            _l.auth = tmp[1] ? tmp[0] : undefined;
+            if (tmp = url.match(/(.*?)@(.*)/)) {
+                _l.auth = tmp[1];
+                url = tmp[2];
+            }
 
             // User and pass.
             if (_l.auth) {
-                tmp2 = _l.auth.split(/\:(.*)/);
-                _l.user = tmp2[0];
-                _l.pass = tmp2[1];
+                tmp = _l.auth.match(/(.*)\:(.*)/);
+
+                _l.user = tmp ? tmp[1] : _l.auth;
+                _l.pass = tmp ? tmp[2] : undefined;
             }
 
             // Hostname.
-            _l.hostname = (tmp[1] ? tmp[1] : tmp[0]).toLowerCase();
+            _l.hostname = url.toLowerCase();
 
             // Return hostname parts.
             if (arg.charAt(0) === '.') { return _i(arg, _l.hostname); }
