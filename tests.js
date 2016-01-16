@@ -206,6 +206,8 @@ test('query string', function() {
   deepEqual( window.url( '?poo', 'http://domain.com:400? & & &' ), undefined );
   deepEqual( window.url( '?test', 'http://domain.com?test=45#5' ), '45' );
   deepEqual( window.url( '?test', 'http://domain.com?test=45?5' ), '45?5' );
+  deepEqual( window.url( '?', 'http://domain.com?silly=willy&field[0]=zero&field[1]=one' ), {'silly': 'willy', 'field': ['zero', 'one']} );
+  deepEqual( window.url( '?', 'http://domain.com?silly=willy&field[0]=zero&field[2]=two' ), {'silly': 'willy', 'field': ['zero', undefined, 'two']} );
 
   deepEqual( window.url( '?field[0]', 'http://domain.com?field[0]=zero&firled[1]=one' ), 'zero' );
   deepEqual( window.url( '?field', 'http://domain.com?field[0]=zero&field[1]=one&var=test' ), ['zero', 'one'] );

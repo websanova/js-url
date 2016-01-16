@@ -52,7 +52,7 @@ url(1);           // path
 url(2);           // index.html
 url(-1);          // index.html
 url('query');     // query1=test&silly=willy
-url('?');         // {query1: 'test', silly: 'willy'}
+url('?');         // {query1: 'test', silly: 'willy', field: ['zero', undefined, 'two']}
 url('?silly');    // willy
 url('?poo');      // null
 url('field[0]')   // zero
