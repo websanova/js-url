@@ -26,15 +26,15 @@ http://rob:abcd1234@www.example.co.uk/path/index.html?query1=test&silly=willy&fi
 ```
 
 ```js
-url();            // http://rob:abcd1234@www.example.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese
+url();            // http://rob:abcd1234@www.example.co.uk/path/index.html?query1=test&silly=willy&field[0]=zero&field[2]=two#test=hash&chucky=cheese
 url('tld');       // co.uk
 url('domain');    // example.co.uk
-url('hostname');  // www.example.com
+url('hostname');  // www.example.co.uk
 url('sub');       // www
 url('.0')         // undefined
 url('.1')         // www
 url('.2')         // example
-url('.-1')        // com
+url('.-1')        // uk
 url('auth')       // rob:abcd1234
 url('user')       // rob
 url('pass')       // abcd1234
