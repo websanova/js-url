@@ -12,7 +12,7 @@ test('url', function() {
 
 if (window.url('tld?')) {
   test('obj', function() {
-    deepEqual( window.url('[]', url), {
+    deepEqual( window.url('{}', url), {
       'auth': 'rob:abcd1234',
       'domain': 'domain.com',
       'file': 'index.html',
@@ -69,7 +69,7 @@ if (window.url('tld?')) {
 }
 else {
   test('obj', function() {
-    deepEqual( window.url('[]', url), {
+    deepEqual( window.url('{}', url), {
       'auth': 'rob:abcd1234',
       'file': 'index.html',
       'fileext': 'html',
