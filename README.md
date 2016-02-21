@@ -11,6 +11,13 @@ Also available for Node.js.
 * [On GitHub as node-url](https://github.com/websanova/node-url)
 * [On Npm as wurl](https://www.npmjs.com/package/wurl)
 
+
+## Bower Install
+
+```
+> bower install js-url
+```
+
 ## Notes
 
 For path(1) and path(-1) will always act as if the path is in the form `/some/path/` regardless of whether the original path was `/some/path` or `some/path/`.
