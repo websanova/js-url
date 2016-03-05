@@ -27,7 +27,7 @@ window.url = (function() {
             tmp = [],
             arg2 = arg.substring(1);
 
-        for (var i in split) {
+        for (var i = 0; i < split.length; i++) {
             field = split[i].match(/(.*?)=(.*)/);
 
             // TODO: regex should be able to handle this.
