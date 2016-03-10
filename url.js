@@ -77,6 +77,11 @@ window.url = (function() {
         }
         else {
 
+            // Ignore Hashbangs.
+            if (tmp = url.match(/(.*?)\/#\!(.*)/)) {
+                url = tmp[1] + tmp[2];
+            }
+
             // Hash.
             if (tmp = url.match(/(.*?)#(.*)/)) {
                 _l.hash = tmp[2];

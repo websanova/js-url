@@ -235,6 +235,15 @@ test('hash string', function() {
   deepEqual( window.url( '#', 'http://domain.com#field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
 });
 
+test('hash bangs', function() {
+  deepEqual( window.url( '?poo', 'http://domain.com/#!?' ), undefined );
+  deepEqual( window.url( '?poo', 'http://domain.com/#!/' ), undefined );
+  deepEqual( window.url( '-1', 'http://www.domain.com/#!/first/second/?test=foo' ), 'second' );
+  deepEqual( window.url( '?', 'http://domain.com/#!/?field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+  deepEqual( window.url( '?', 'http://domain.com/#!?field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+  deepEqual( window.url( '#', 'http://domain.com/#!/#field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+});
+
 if (window.url('tld?')) {
   test('tld', function() {
     deepEqual( window.url( 'tld', 'www.example.ly' ), 'ly' );
