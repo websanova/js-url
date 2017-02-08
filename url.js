@@ -182,11 +182,16 @@
         };
     })();
 
-    if(typeof window.jQuery !== 'undefined') {
-        window.jQuery.extend({
-            url: function(arg, url) { return window.url(arg, url); }
-        });
-    }
+	if (typeof window.define === 'function' && window.define.amd) {
+		window.define(url);
+	} else {
+		if(typeof window.jQuery !== 'undefined') {
+			window.jQuery.extend({
+				url: function(arg, url) { return window.url(arg, url); }
+			});
+		}
 
-	window.url = url;
+		window.url = url;
+	}
+
 })();
