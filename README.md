@@ -95,7 +95,7 @@ Also include is a jQuery version of the plugin that can be called via $.url() wi
 
 ## AMD module
 
-If AMD loader present (basically when `(typeof window.define === 'function' && window.define.amd !== undefined)` is truthy) the script registers itself as anonymous AMD module without polluting global `window`-object or extending `jQuery`.
+If AMD loader present (when `(typeof window.define === 'function' && window.define.amd !== undefined)` is truthy) the script registers itself as anonymous AMD module without polluting global `window`-object or extending `jQuery`.
 
 ## Grunt.js
 
