@@ -183,7 +183,9 @@
     })();
 
 	if (typeof window.define === 'function' && window.define.amd) {
-		window.define(url);
+		window.define([], function () {
+		    return url;
+		});
 	} else {
 		if(typeof window.jQuery !== 'undefined') {
 			window.jQuery.extend({
