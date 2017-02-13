@@ -93,6 +93,10 @@ etc...
 
 Also include is a jQuery version of the plugin that can be called via $.url() with all the same options.  If you're already using jQuery it may be better to use the jQuery version to avoid namespacing issues.
 
+## AMD module
+
+If AMD loader present (when `(typeof define === 'function' && define.amd !== undefined)` is truthy) the script registers itself as anonymous AMD module without polluting global `window`-object or extending `jQuery`.
+
 ## Grunt.js
 
 If you want to use Grunt you will need to install the required plugins locally using `npm install` in the root folder of your project.  If you need to setup Grunt on your system you can follow my [Setting up Grunt.js](http://www.websanova.com/blog/javascript/how-to-setup-grunt) guide.
