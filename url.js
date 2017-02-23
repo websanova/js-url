@@ -183,7 +183,7 @@
     })();
 
 	if (typeof window.define === 'function' && window.define.amd) {
-		window.define([], function () {
+		window.define('js-url', [], function () {
 		    return url;
 		});
 	} else {
