@@ -144,25 +144,25 @@ test('protocol', function() {
 test('path', function() {
   deepEqual( window.url( 'path', url ), '/path/index.html' );
   deepEqual( window.url( 'path', 'http://www.domain.com/first/second' ), '/first/second' );
-  deepEqual( window.url( 'path', 'http://www.domain.com/first/second/' ), '/first/second' );
+  deepEqual( window.url( 'path', 'http://www.domain.com/first/second/' ), '/first/second/' );
   deepEqual( window.url( 'path', 'http://www.domain.com:8080/first/second' ), '/first/second' );
-  deepEqual( window.url( 'path', 'http://www.domain.com:8080/first/second/' ), '/first/second' );
+  deepEqual( window.url( 'path', 'http://www.domain.com:8080/first/second/' ), '/first/second/' );
   deepEqual( window.url( 'path', 'http://www.domain.com/first/second?test=foo' ), '/first/second' );
-  deepEqual( window.url( 'path', 'http://www.domain.com/first/second/?test=foo' ), '/first/second' );
+  deepEqual( window.url( 'path', 'http://www.domain.com/first/second/?test=foo' ), '/first/second/' );
   deepEqual( window.url( 'path', 'http://www.domain.com/path#anchor' ), '/path' );
-  deepEqual( window.url( 'path', 'http://www.domain.com/path/#anchor' ), '/path' );
+  deepEqual( window.url( 'path', 'http://www.domain.com/path/#anchor' ), '/path/' );
   deepEqual( window.url( 'path', 'http://www.domain.com' ), '' );
-  deepEqual( window.url( 'path', 'http://www.domain.com/' ), '' );
+  deepEqual( window.url( 'path', 'http://www.domain.com/' ), '/' );
   deepEqual( window.url( 'path', 'http://www.domain.com#anchor' ), '' );
-  deepEqual( window.url( 'path', 'http://www.domain.com/#anchor' ), '' );
+  deepEqual( window.url( 'path', 'http://www.domain.com/#anchor' ), '/' );
   deepEqual( window.url( 'path', 'http://www.domain.com?test=foo' ), '' );
-  deepEqual( window.url( 'path', 'http://www.domain.com/?test=foo' ), '' );
+  deepEqual( window.url( 'path', 'http://www.domain.com/?test=foo' ), '/' );
   deepEqual( window.url( 'path', 'http://www.domain.com:80' ), '' );
-  deepEqual( window.url( 'path', 'http://www.domain.com:80/' ), '' );
+  deepEqual( window.url( 'path', 'http://www.domain.com:80/' ), '/' );
   deepEqual( window.url( 'path', 'http://www.domain.com:80#anchor' ), '' );
-  deepEqual( window.url( 'path', 'http://www.domain.com:80/#anchor' ), '' );
+  deepEqual( window.url( 'path', 'http://www.domain.com:80/#anchor' ), '/' );
   deepEqual( window.url( 'path', 'http://www.domain.com:80?test=foo' ), '' );
-  deepEqual( window.url( 'path', 'http://www.domain.com:80/?test=foo' ), '' );
+  deepEqual( window.url( 'path', 'http://www.domain.com:80/?test=foo' ), '/' );
 });
 
 test('file', function() {
@@ -186,7 +186,8 @@ test('url parts', function() {
   deepEqual( window.url( '1', 'http://www.domain.com/first/second' ), 'first' );
   deepEqual( window.url( '1', 'http://www.domain.com/first/second/' ), 'first' );
   deepEqual( window.url( '-1', 'http://www.domain.com/first/second?test=foo' ), 'second' );
-  deepEqual( window.url( '-1', 'http://www.domain.com/first/second/?test=foo' ), 'second' );
+  deepEqual( window.url( '-1', 'http://www.domain.com/first/second/?test=foo' ), '' );
+  deepEqual( window.url( '-2', 'http://www.domain.com/first/second/?test=foo' ), 'second' );
 });
 
 test('query string', function() {
@@ -238,7 +239,8 @@ test('hash string', function() {
 test('hash bangs', function() {
   deepEqual( window.url( '?poo', 'http://domain.com/#!?' ), undefined );
   deepEqual( window.url( '?poo', 'http://domain.com/#!/' ), undefined );
-  deepEqual( window.url( '-1', 'http://www.domain.com/#!/first/second/?test=foo' ), 'second' );
+  deepEqual( window.url( '-1', 'http://www.domain.com/#!/first/second/?test=foo' ), '' );
+  deepEqual( window.url( '-2', 'http://www.domain.com/#!/first/second/?test=foo' ), 'second' );
   deepEqual( window.url( '?', 'http://domain.com/#!/?field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
   deepEqual( window.url( '?', 'http://domain.com/#!?field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
   deepEqual( window.url( '#', 'http://domain.com/#!/#field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );

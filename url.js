@@ -114,7 +114,7 @@
                 }
 
                 // Clean up path.
-                _l.path = (_l.path || '').replace(/^([^\/])/, '/$1').replace(/\/$/, '');
+                _l.path = (_l.path || '').replace(/^([^\/])/, '/$1');
 
                 // Return path parts.
                 if (arg.match(/^[\-0-9]+$/)) { arg = arg.replace(/^([^\/])/, '/$1'); }
