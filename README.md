@@ -61,7 +61,7 @@ url(-1);          // index.html
 url('query');     // query1=test&silly=willy
 url('?');         // {query1: 'test', silly: 'willy', field: ['zero', undefined, 'two']}
 url('?silly');    // willy
-url('?poo');      // null
+url('?poo');      // undefined
 url('field[0]')   // zero
 url('field')      // ['zero', undefined, 'two']
 url('hash');      // test=hash&chucky=cheese
