@@ -35,7 +35,7 @@ if (window.url('tld?')) {
     deepEqual( window.url('tld', 'http://sub.www.domain.co.uk'), 'co.uk' );
     deepEqual( window.url('tld', 'http://www.domain.org.uk'), 'org.uk' );
     deepEqual( window.url('tld', 'http://domain.la'), 'la' );
-    deepEqual( window.url('tld', 'http://in'), 'in' );
+    deepEqual( window.url('tld', 'http://in'), undefined );
     deepEqual( window.url('tld', 'http://.asia'), 'asia' );
     deepEqual( window.url('tld', 'http://.cao.uk'), undefined );
     deepEqual( window.url('tld', 'http://'), undefined );
@@ -53,6 +53,7 @@ if (window.url('tld?')) {
     deepEqual( window.url('domain', 'http://'), undefined );
     deepEqual( window.url('domain', 'http://domain.zoo'), undefined );
     deepEqual( window.url('domain', url), 'domain.com' );
+    deepEqual( window.url('domain', 'https://test.testshi.cn/test.html' ), 'testshi.cn' );
   });
 
   test('sub', function() {
@@ -98,6 +99,7 @@ test('mailto', function() {
 test('hostname', function() {
   deepEqual( window.url( 'hostname', url ), 'www.domain.com' );
   deepEqual( window.url( 'hostname', urlIp ), '1.2.3.4' );
+  deepEqual( window.url( 'hostname', 'https://test.testshi.cn/test.html' ), 'test.testshi.cn' );
 });
 
 test('domain parts', function() {
