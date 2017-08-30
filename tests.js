@@ -54,6 +54,7 @@ if (window.url('tld?')) {
     deepEqual( window.url('domain', 'http://domain.zoo'), undefined );
     deepEqual( window.url('domain', url), 'domain.com' );
     deepEqual( window.url('domain', 'https://test.testshi.cn/test.html' ), 'testshi.cn' );
+    deepEqual( window.url('domain', 'https://goo.gl/maps' ), 'goo.gl' );
   });
 
   test('sub', function() {
@@ -100,6 +101,7 @@ test('hostname', function() {
   deepEqual( window.url( 'hostname', url ), 'www.domain.com' );
   deepEqual( window.url( 'hostname', urlIp ), '1.2.3.4' );
   deepEqual( window.url( 'hostname', 'https://test.testshi.cn/test.html' ), 'test.testshi.cn' );
+  deepEqual( window.url( 'hostname', 'https://goo.gl/maps' ), 'goo.gl' );
 });
 
 test('domain parts', function() {
