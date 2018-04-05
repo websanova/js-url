@@ -176,6 +176,12 @@ test('file', function() {
   deepEqual( window.url( 'file', 'http://domain.com' ), undefined );
   deepEqual( window.url( 'filename', 'http://domain.com' ), undefined );
   deepEqual( window.url( 'fileext', 'http://domain.com' ), undefined );
+  deepEqual( window.url( 'file', 'http://domain.com/some.file.png' ), 'some.file.png' );
+  deepEqual( window.url( 'filename', 'http://domain.com/some.file.png' ), 'some.file' );
+  deepEqual( window.url( 'fileext', 'http://domain.com/some.file.png' ), 'png' );
+  deepEqual( window.url( 'file', 'http://domain.com/.png' ), '.png' );
+  deepEqual( window.url( 'filename', 'http://domain.com/.png' ), '' );
+  deepEqual( window.url( 'fileext', 'http://domain.com/.png' ), 'png' );
 });
 
 test('url parts', function() {
