@@ -11,6 +11,10 @@ Also available for Node.js.
 * [On GitHub as node-url](https://github.com/websanova/node-url)
 * [On Npm as wurl](https://www.npmjs.com/package/wurl)
 
+Full list of domains.
+
+* [https://publicsuffix.org/list/public_suffix_list.dat](https://publicsuffix.org/list/public_suffix_list.dat)
+
 
 ## Bower Install
 
