@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test url</title>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    
+    <script src="../src/url-tld.js"></script>
+</head>
+<body>
+    <div id="qunit"></div>
+    
+    <script>
+        var urlTest = 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
+        var urlHttps = 'https://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
+        var urlIp = 'https://rob:abcd1234@1.2.3.4/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
+
+        QUnit.test('url', function(ass) {
+          ass.deepEqual( window.url( ), window.location.href );
+        });
+
+        if (window.url('tld?')) {
+          QUnit.test('obj', function(ass) {
+            ass.deepEqual( window.url('{}', urlTest), {
+              'auth': 'rob:abcd1234',
+              'domain': 'domain.com',
+              'file': 'index.html',
+              'fileext': 'html',
+              'filename': 'index',
+              'hash': 'test=hash&chucky=cheese',
+              'hostname': 'www.domain.com',
+              'pass': 'abcd1234',
+              'path': '/path/index.html',
+              'port': '80',
+              'protocol': 'http',
+              'query': 'query1=test&silly=willy',
+              'sub': 'www',
+              'tld': 'com',
+              'user': 'rob'
+            });
+          });
+
+          QUnit.test('tld', function(ass) {
+            ass.deepEqual( window.url('tld', 'http://sub.www.domain.co.uk'), 'co.uk' );
+            ass.deepEqual( window.url('tld', 'http://www.domain.org.uk'), 'org.uk' );
+            ass.deepEqual( window.url('tld', 'http://domain.la'), 'la' );
+            ass.deepEqual( window.url('tld', 'http://in'), undefined );
+            ass.deepEqual( window.url('tld', 'http://.asia'), 'asia' );
+            ass.deepEqual( window.url('tld', 'http://.cao.uk'), undefined );
+            ass.deepEqual( window.url('tld', 'http://'), undefined );
+            ass.deepEqual( window.url('tld', 'http://domain.zoo'), undefined );
+            ass.deepEqual( window.url('tld', urlTest), 'com' );
+          });
+
+          QUnit.test('domain', function(ass) {
+            ass.deepEqual( window.url('domain', 'http://sub.www.domain.co.uk'), 'domain.co.uk' );
+            ass.deepEqual( window.url('domain', 'http://www.domain.org.uk'), 'domain.org.uk' );
+            ass.deepEqual( window.url('domain', 'http://domain.la'), 'domain.la' );
+            ass.deepEqual( window.url('domain', 'http://in'), undefined );
+            ass.deepEqual( window.url('domain', 'http://.asia'), undefined );
+            ass.deepEqual( window.url('domain', 'http://.cao.uk'), undefined );
+            ass.deepEqual( window.url('domain', 'http://'), undefined );
+            ass.deepEqual( window.url('domain', 'http://domain.zoo'), undefined );
+            ass.deepEqual( window.url('domain', urlTest), 'domain.com' );
+            ass.deepEqual( window.url('domain', 'https://test.testshi.cn/test.html' ), 'testshi.cn' );
+            ass.deepEqual( window.url('domain', 'https://goo.gl/maps' ), 'goo.gl' );
+          });
+
+          QUnit.test('sub', function(ass) {
+            ass.deepEqual( window.url('sub', 'http://sub.www.domain.co.uk'), 'sub.www' );
+            ass.deepEqual( window.url('sub', 'http://www.domain.org.uk'), 'www' );
+            ass.deepEqual( window.url('sub', 'http://domain.la'), undefined );
+            ass.deepEqual( window.url('sub', 'http://in'), undefined );
+            ass.deepEqual( window.url('sub', 'http://.asia'), undefined );
+            ass.deepEqual( window.url('sub', 'http://.cao.uk'), undefined );
+            ass.deepEqual( window.url('sub', 'http://'), undefined );
+            ass.deepEqual( window.url('sub', 'http://domain.zoo'), undefined );
+            ass.deepEqual( window.url('sub', urlTest), 'www' );
+          });
+        }
+        else {
+          QUnit.test('obj', function(ass) {
+            ass.deepEqual( window.url('{}', urlTest), {
+              'auth': 'rob:abcd1234',
+              'file': 'index.html',
+              'fileext': 'html',
+              'filename': 'index',
+              'hash': 'test=hash&chucky=cheese',
+              'hostname': 'www.domain.com',
+              'pass': 'abcd1234',
+              'path': '/path/index.html',
+              'port': '80',
+              'protocol': 'http',
+              'query': 'query1=test&silly=willy',
+              'user': 'rob'
+            });
+          });
+        }
+
+        QUnit.test('mailto', function(ass) {
+          ass.deepEqual( window.url( 'email', 'mailto:rob@websanova.com' ), 'rob@websanova.com' );
+          ass.deepEqual( window.url( 'protocol', 'mailto:rob@websanova.com' ), 'mailto' );
+          ass.deepEqual( window.url( 'email', 'mailto:/rob@websanova.com' ), undefined );
+          ass.deepEqual( window.url( 'email', 'mailto://rob@websanova.com' ), undefined );
+          ass.deepEqual( window.url( 'protocol', 'mailto:/rob@websanova.com' ), 'http' );
+          ass.deepEqual( window.url( 'mailto:', 'mailto:/rob@websanova.com' ), undefined );
+        });
+
+        QUnit.test('hostname', function(ass) {
+          ass.deepEqual( window.url( 'hostname', urlTest ), 'www.domain.com' );
+          ass.deepEqual( window.url( 'hostname', urlIp ), '1.2.3.4' );
+          ass.deepEqual( window.url( 'hostname', 'https://test.testshi.cn/test.html' ), 'test.testshi.cn' );
+          ass.deepEqual( window.url( 'hostname', 'https://goo.gl/maps' ), 'goo.gl' );
+        });
+
+        QUnit.test('domain parts', function(ass) {
+          ass.deepEqual( window.url( '.', urlTest ), ['www', 'domain', 'com'] );
+          ass.deepEqual( window.url( '.0', urlTest ), undefined );
+          ass.deepEqual( window.url( '.1', urlTest ), 'www' );
+          ass.deepEqual( window.url( '.2', urlTest ), 'domain' );
+          ass.deepEqual( window.url( '.-1', urlTest ), 'com' );
+        });
+
+        QUnit.test('auth', function(ass) {
+          ass.deepEqual( window.url( 'auth', urlTest ), 'rob:abcd1234' );
+          ass.deepEqual( window.url( 'user', urlTest ), 'rob' );
+          ass.deepEqual( window.url( 'pass', urlTest ), 'abcd1234' );
+        });
+
+        QUnit.test('port', function(ass) {
+          ass.deepEqual( window.url( 'port', urlTest ), '80' );
+          ass.deepEqual( window.url( 'port', urlTest.toUpperCase() ), '80' );
+          ass.deepEqual( window.url( 'port', 'http://example.com:80' ), '80' );
+          ass.deepEqual( window.url( 'port', urlHttps ), '443' );
+          ass.deepEqual( window.url( 'port', urlHttps.toUpperCase() ), '443' );
+          ass.deepEqual( window.url( 'port', 'https://example.com:443' ), '443' );
+          ass.deepEqual( window.url( 'port', 'http://domain.com:400?poo=a:b' ), '400' );
+          ass.deepEqual( window.url( 'port', 'https://domain.com:80' ), '80' );
+          ass.deepEqual( window.url( 'port', 'http://domain.com:443' ), '443' );
+          ass.deepEqual( window.url( 'port', 'http://domain.com' ), '80' );
+          ass.deepEqual( window.url( 'port', 'https://domain.com' ), '443' );
+          ass.deepEqual( window.url( 'port', 'rob@domain.com' ), '80' );
+        });
+
+        QUnit.test('protocol', function(ass) {
+          ass.deepEqual( window.url( 'protocol', 'http://domain.com' ), 'http' );
+          ass.deepEqual( window.url( 'protocol', 'http://domain.com:80' ), 'http' );
+          ass.deepEqual( window.url( 'protocol', 'http://domain.com:443' ), 'http' );
+          ass.deepEqual( window.url( 'protocol', 'domain.com' ), 'http' );
+          ass.deepEqual( window.url( 'protocol', 'domain.com:80' ), 'http' );
+          ass.deepEqual( window.url( 'protocol', 'domain.com:443' ), 'https' );
+          ass.deepEqual( window.url( 'protocol', 'https://domain.com:443' ), 'https' );
+          ass.deepEqual( window.url( 'protocol', 'https://domain.com:80' ), 'https' );
+          ass.deepEqual( window.url( 'protocol', 'rob@domain.com' ), 'http' );
+        });
+
+        QUnit.test('path', function(ass) {
+          ass.deepEqual( window.url( 'path', urlTest ), '/path/index.html' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/first/second' ), '/first/second' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/first/second/' ), '/first/second/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:8080/first/second' ), '/first/second' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:8080/first/second/' ), '/first/second/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/first/second?test=foo' ), '/first/second' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/first/second/?test=foo' ), '/first/second/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/path#anchor' ), '/path' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/path/#anchor' ), '/path/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com' ), '' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/' ), '/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com#anchor' ), '' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/#anchor' ), '/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com?test=foo' ), '' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com/?test=foo' ), '/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:80' ), '' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:80/' ), '/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:80#anchor' ), '' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:80/#anchor' ), '/' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:80?test=foo' ), '' );
+          ass.deepEqual( window.url( 'path', 'http://www.domain.com:80/?test=foo' ), '/' );
+        });
+
+        QUnit.test('file', function(ass) {
+          ass.deepEqual( window.url( 'file', urlTest ), 'index.html' );
+          ass.deepEqual( window.url( 'filename', urlTest ), 'index' );
+          ass.deepEqual( window.url( 'fileext', urlTest ), 'html' );
+          ass.deepEqual( window.url( 'file', 'http://domain.com' ), undefined );
+          ass.deepEqual( window.url( 'filename', 'http://domain.com' ), undefined );
+          ass.deepEqual( window.url( 'fileext', 'http://domain.com' ), undefined );
+          ass.deepEqual( window.url( 'file', 'http://domain.com/some.file.png' ), 'some.file.png' );
+          ass.deepEqual( window.url( 'filename', 'http://domain.com/some.file.png' ), 'some.file' );
+          ass.deepEqual( window.url( 'fileext', 'http://domain.com/some.file.png' ), 'png' );
+          ass.deepEqual( window.url( 'file', 'http://domain.com/.png' ), '.png' );
+          ass.deepEqual( window.url( 'filename', 'http://domain.com/.png' ), '' );
+          ass.deepEqual( window.url( 'fileext', 'http://domain.com/.png' ), 'png' );
+        });
+
+        QUnit.test('url parts', function(ass) {
+          ass.deepEqual( window.url( '/', urlTest ), ['path', 'index.html'] );
+          ass.deepEqual( window.url( '0', urlTest ), undefined );
+          ass.deepEqual( window.url( '-4', urlTest ), undefined );
+          ass.deepEqual( window.url( '1', urlTest ), 'path' );
+          ass.deepEqual( window.url( 1, urlTest ), 'path' );
+          ass.deepEqual( window.url( '2', urlTest ), 'index.html' );
+          ass.deepEqual( window.url( '3', urlTest ), undefined );
+          ass.deepEqual( window.url( '-1', urlTest ), 'index.html' );
+          ass.deepEqual( window.url( '1', 'http://www.domain.com/first/second' ), 'first' );
+          ass.deepEqual( window.url( '1', 'http://www.domain.com/first/second/' ), 'first' );
+          ass.deepEqual( window.url( '-1', 'http://www.domain.com/first/second?test=foo' ), 'second' );
+          ass.deepEqual( window.url( '-1', 'http://www.domain.com/first/second/?test=foo' ), '' );
+          ass.deepEqual( window.url( '-2', 'http://www.domain.com/first/second/?test=foo' ), 'second' );
+        });
+
+        QUnit.test('query string', function(ass) {
+          ass.deepEqual( window.url( 'query', urlTest ), 'query1=test&silly=willy' );
+          ass.deepEqual( window.url( '?', urlTest ), {'query1': 'test', 'silly': 'willy'} );
+          ass.deepEqual( window.url( '?silly', urlTest ), 'willy' );
+          ass.deepEqual( window.url( '?poo', urlTest ), undefined );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com?poo=' ), '' );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com/?poo' ), '' );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com?poo' ), '' );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com?' ), undefined );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com' ), undefined );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com?poo=a+b' ), 'a b' );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com?poo=javascript%20decode%20uri%20%2B%20sign%20to%20space' ), 'javascript decode uri + sign to space' );
+          ass.deepEqual( window.url( '?key', 'http://domain.com?key=value=va?key2=value' ), 'value=va?key2=value');
+          ass.deepEqual( window.url( '?poo', 'http://domain.com:400?poo=a:b' ), 'a:b' );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com:400? & & &' ), undefined );
+          ass.deepEqual( window.url( '?test', 'http://domain.com?test=45#5' ), '45' );
+          ass.deepEqual( window.url( '?test', 'http://domain.com?test=45?5' ), '45?5' );
+          ass.deepEqual( window.url( '?', 'http://domain.com?silly=willy&field[0]=zero&field[1]=one' ), {'silly': 'willy', 'field': ['zero', 'one']} );
+          ass.deepEqual( window.url( '?', 'http://domain.com?silly=willy&field[0]=zero&field[2]=two' ), {'silly': 'willy', 'field': ['zero', undefined, 'two']} );
+
+          ass.deepEqual( window.url( '?field[0]', 'http://domain.com?field[0]=zero&firled[1]=one' ), 'zero' );
+          ass.deepEqual( window.url( '?field', 'http://domain.com?field[0]=zero&field[1]=one&var=test' ), ['zero', 'one'] );
+          ass.deepEqual( window.url( '?field', 'http://domain.com?field[0]=zero&field[3]=one&var=test' ), ['zero', undefined, undefined, 'one'] );
+          ass.deepEqual( window.url( '?var', 'http://domain.com?field[0]=zero&field[3]=one&var=test' ), 'test' );
+          ass.deepEqual( window.url( '?', 'http://domain.com?field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+        });
+
+        QUnit.test('hash string', function(ass) {
+          ass.deepEqual( window.url( 'hash', urlTest ), 'test=hash&chucky=cheese' );
+          ass.deepEqual( window.url( '#', urlTest ), {'chucky': 'cheese', 'test': 'hash'} );
+          ass.deepEqual( window.url( '#chucky', urlTest ), 'cheese' );
+          ass.deepEqual( window.url( '#poo', urlTest ), undefined );
+          ass.deepEqual( window.url( '#poo', 'http://domain.com#poo=' ), '' );
+          ass.deepEqual( window.url( '#poo', 'http://domain.com/#poo' ), '' );
+          ass.deepEqual( window.url( '#poo', 'http://domain.com#poo' ), '' );
+          ass.deepEqual( window.url( '#poo', 'http://domain.com#' ), undefined );
+          ass.deepEqual( window.url( '#poo', 'http://domain.com' ), undefined );
+          ass.deepEqual( window.url( '#test', 'http://domain.com#test=45#5' ), '45#5' );
+
+          ass.deepEqual( window.url( '#field[0]', 'http://domain.com#field[0]=zero&firled[1]=one' ), 'zero' );
+          ass.deepEqual( window.url( '#field', 'http://domain.com#field[0]=zero&field[1]=one&var=test' ), ['zero', 'one'] );
+          ass.deepEqual( window.url( '#field', 'http://domain.com#field[0]=zero&field[3]=one&var=test' ), ['zero', undefined, undefined, 'one'] );
+          ass.deepEqual( window.url( '#var', 'http://domain.com#field[0]=zero&field[3]=one&var=test' ), 'test' );
+          ass.deepEqual( window.url( '#', 'http://domain.com#field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+        });
+
+        QUnit.test('hash bangs', function(ass) {
+          ass.deepEqual( window.url( '?poo', 'http://domain.com/#!?' ), undefined );
+          ass.deepEqual( window.url( '?poo', 'http://domain.com/#!/' ), undefined );
+          ass.deepEqual( window.url( '-1', 'http://www.domain.com/#!/first/second/?test=foo' ), '' );
+          ass.deepEqual( window.url( '-2', 'http://www.domain.com/#!/first/second/?test=foo' ), 'second' );
+          ass.deepEqual( window.url( '?', 'http://domain.com/#!/?field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+          ass.deepEqual( window.url( '?', 'http://domain.com/#!?field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+          ass.deepEqual( window.url( '#', 'http://domain.com/#!/#field[0]=zero&field[1]=one&var=test' ), {'field': ['zero', 'one'], 'var': 'test'} );
+        });
+
+        if (window.url('tld?')) {
+          QUnit.test('tld', function(ass) {
+            ass.deepEqual( window.url( 'tld', 'www.example.ly' ), 'ly' );
+            ass.deepEqual( window.url( 'tld', 'www.example.xyz' ), 'xyz' );
+          });
+        }
+    </script>
+</body><
+</html>

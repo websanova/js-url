@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test jQuery url</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="../dist/jquery-url-tld.min.js"></script> 
+</head>
+<body>
+    <div id="qunit"></div>
+    
+    <script>
+        var urlTest = 'http://rob:abcd1234@www.domain.com/path/index.html?query1=test&silly=willy#test=hash&chucky=cheese';
+
+        QUnit.test('jQuery', function(ass) {
+            ass.deepEqual( $.url( 'hostname', urlTest ), 'www.domain.com' );
+            ass.deepEqual( $.url( 'path', urlTest ), '/path/index.html' );
+            ass.deepEqual( $.url( '?silly', urlTest ), 'willy' );
+            ass.deepEqual( $.url( '#poo', urlTest ), undefined );
+        });
+    </script>
+</body>
+</html>

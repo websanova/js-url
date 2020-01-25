@@ -1,35 +1,28 @@
 {
-  "name": "url",
-  "title": "url jQuery Plugin",
-  "description": "A simple, lightweight url parser for JavaScript (~1.7 Kb minified, ~0.7Kb gzipped).",
-  "keywords": [
-    "websanova",
-    "url"
-  ],
-  "version": "2.5.3",
-  "author": {
-    "name": "Websanova",
-    "email": "rob@websanova.com",
-    "url": "http://websanova.com"
-  },
-  "maintainers": [
-    {
-      "name": "Websanova",
-      "email": "rob@websanova.com",
-      "url": "http://websanova.com"
+    "name": "url",
+    "title": "url jQuery Plugin",
+    "description": "A simple, lightweight url parser for JavaScript (~1.7 Kb minified, ~0.7Kb gzipped).",
+    "keywords": ["websanova", "url", "parser"],
+    "version": "2.5.3",
+    "author": {
+        "name": "Websanova",
+        "email": "rob@websanova.com",
+        "url": "http://websanova.com"
+    },
+    "maintainers": [{
+        "name": "Websanova",
+        "email": "rob@websanova.com",
+        "url": "http://websanova.com"
+    }],
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/websanova/js-url#license"
+    }],
+    "bugs": "https://github.com/websanova/js-url/issues",
+    "homepage": "https://github.com/websanova/js-url",
+    "docs": "https://github.com/websanova/js-url",
+    "download": "https://github.com/websanova/js-url/tags",
+    "dependencies": {
+        "jquery": ">=1.5"
     }
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/websanova/js-url#license"
-    }
-  ],
-  "bugs": "https://github.com/websanova/js-url/issues",
-  "homepage": "http://url.websanova.com",
-  "docs": "https://github.com/websanova/js-url#url",
-  "download": "https://github.com/websanova/js-url/tags",
-  "dependencies": {
-    "jquery": ">=1.5"
-  }
 }

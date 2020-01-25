@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo url</title>
+    <script src="../src/url-tld.js"></script>
+</head>
+<body>
+    <h1>Demo url</h1>
+    
+    <input id="input" value="https://www.websanova.com?query=hi#hash=test" />
+    <table id="output"></table>
+
+    <script>
+        var input  = document.getElementById('input');
+        var output  = document.getElementById('output');
+
+        input.addEventListener('keyup', function () {
+            var i, ii,
+                val,
+                str = '',
+                args = [null, , 'domain', 'hostname', 'sub', '.0', '.1', '.2', '.-1', 'auth', 'user', 'pass', 'port', 'protocol', 'path', 'file', 'filename', 'filext', '1', '2', '3', '-1', 'query', '?', 'hash', '#'];
+
+            for (i = 0, ii = args.length; i < ii; i++) {
+                val = window.url(args[i], input.value);
+
+                str += '<tr><td><b>' + args[i] + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td>' + (val ? (typeof val === 'object' ? JSON.stringify(val) : val) : '-') + '</td></tr>';
+            }
+
+            output.innerHTML = str;
+        });
+
+        input.dispatchEvent(new KeyboardEvent('keyup'));
+    </script>
+</body>
+</html>
