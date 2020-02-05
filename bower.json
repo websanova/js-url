@@ -8,7 +8,7 @@
     "homepage": "https://github.com/websanova/js-url",
     "license": "MIT",
     "main": [
-        "./dist/es5-url-min.js"
+        "./dist/es5-url.min.js"
     ],
     "ignore": [
         "demo",
